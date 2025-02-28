@@ -1,17 +1,17 @@
 <div id="header">
     <a href="index.php">
         Toy Shop
-    <a>
+    </a>
     <div id="login_nav">
         <?php
             if(isset($_SESSION["MaTaiKhoan"]))
             {
                 //Login in
                 ?>
-                    Hello, <?php echo $_SESSION["TenHienThi"];?>
+                    <p>Hello, <?=$_SESSION["TenHienThi"];?></p>
                     <a href="modules/xlDangXuat.php">Đăng xuất</a>
                     <a href="index.php?a=5">
-                        <img src="img/manage_shopping.png" height="20"/>
+                        <img src="img/manage_shopping.png"/>
                     </a>
                 <?php
             }
@@ -25,6 +25,16 @@
                         <input type="button" value="Đăng ký" onclick="ChuyenTrangDangKy()"/>
                     </form>
                     <script type="text/javascript">
+                        function KiemTraDangNhap() {
+                            var us = document.getElementById("txtUS").value.trim();
+                            var ps = document.getElementById("txtPS").value.trim();
+
+                            if (us === "" || ps === "") {
+                                alert("Vui lòng nhập đầy đủ tài khoản và mật khẩu!");
+                                return false; // Ngăn form gửi đi
+                            }
+                            return true; // Cho phép gửi form nếu đủ dữ liệu
+                        }
                         function ChuyenTrangDangKy () {
                             location = "index.php?a=6";
                         }

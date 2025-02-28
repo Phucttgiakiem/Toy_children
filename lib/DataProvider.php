@@ -20,5 +20,11 @@
                 $conn->close();
             }
         }
+        public static function ChangeURL($path){
+            echo '<script type="text/javascript">';
+            echo 'window.location.href = "'.$path.'";';
+            echo '</script>';
+            exit();
+        }
     }
 ?>
