@@ -5,7 +5,7 @@
     else 
         DataProvider::ChangeURL("index.php?a=404");
 
-    $sql = "SELECT s.MaSanPham, s.TenSanPham, s.GiaSanPham,s.SoLuongTon,s.SoLuotXem,s.HinhURL,s.MoTa,h.TenHangSanXuat,l.TenLoaiSanPham FROM
+    $sql = "SELECT s.MaSanPham, s.TenSanPham, s.GiaSanPham,s.SoLuongTon,s.SoLuocXem,s.HinhURL,s.MoTa,h.TenHangSanXuat,l.TenLoaiSanPham FROM
     SanPham s,HangSanXuat h, LoaiSanPham l WHERE s.BiXoa = 0 AND s.MaHangSanXuat = h.MaHangSanXuat AND s.MaLoaiSanPham = l.MaLoaiSanPham AND s.MaSanPham = $id";
     $result = DataProvider::ExecuteQuery($sql);
     $row = mysqli_fetch_array($result);
@@ -36,7 +36,7 @@
         </div>
         <div>
             <span class="label">Số lượt xem:</span>
-            <span class="data"><?php echo $row["SoLuotXem"] + 1; ?>lượt</span>
+            <span class="data"><?php echo $row["SoLuocXem"] + 1; ?>lượt</span>
         </div>
         <div class="giohang">
             <?php
@@ -57,8 +57,8 @@
 </div>
 <?php
     // update viewer quantity at Database
-    $SoLuotXem = $row["SoluotXem"] + 1;
-    $sql = "UPDATE SanPham SET SoLuotXem = $SoLuotXem
+    $SoLuotXem = $row["SoLuocXem"] + 1;
+    $sql = "UPDATE SanPham SET SoLuocXem = $SoLuotXem
             WHERE MaSanPham = $id";
     DataProvider::ExecuteQuery($sql);
 ?>

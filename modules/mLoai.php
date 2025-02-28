@@ -10,6 +10,7 @@
                     <a href="index.php?a=2&id=<?php echo $row["MaLoaiSanPham"];?>">
                         <?php echo $row["TenLoaiSanPham"]; ?>
                     </a>
+                </dd>
             <?php
         }
     ?>

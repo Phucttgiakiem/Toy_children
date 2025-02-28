@@ -3,7 +3,7 @@
     {
         public static function ExecuteQuery($sql){
             try {
-                $conn = new mysqli('localhost','root','root','BabyShop');
+                $conn = new mysqli('localhost','root','','BabyShop');
                 //Check connection
                 if($conn -> connect_error) {
                     throw new Exception("Connection failed ".$conn -> connect_error);
@@ -12,10 +12,12 @@
                 $conn->set_charset("utf8");
                 // perform query
                 $result = $conn->query($sql);
+                return $result;
                 // close connection
-                $conn->close();
             } catch (Exception $e){
                 die("error: ".$e->getMessage());
+            }finally {
+                $conn->close();
             }
         }
     }

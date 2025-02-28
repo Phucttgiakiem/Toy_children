@@ -1,6 +1,6 @@
 <h2>Sản phẩm được quan tâm</h2>
 <?php
-    $sql = "SELECT * FROM SanPham WHERE BiXoa = 0 ORDER BY soLuotXem DESC LIMIT 0, 4";
+    $sql = "SELECT * FROM SanPham WHERE BiXoa = 0 ORDER BY soLuocXem DESC LIMIT 0, 4";
     $result = DataProvider::ExecuteQuery($sql);
     while($row = mysqli_fetch_array($result))
     {
