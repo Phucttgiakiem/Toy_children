@@ -4,7 +4,7 @@
         $sub = $_GET["sub"];
     switch ($sub) {
         case 1:
-            include "pages/TaoTaiKhoan/pTaoTaiKhoang.php";
+            include "pages/TaoTaiKhoan/pTaoTaiKhoan.php";
             break;
         default:
             DataProvider::ChangeURL("index.php?a=404");

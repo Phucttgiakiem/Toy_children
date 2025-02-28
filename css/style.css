@@ -229,6 +229,18 @@ body {
     font-weight: 500;
     margin-left: 2rem;
 }
+#chitietright .giohang {
+    height: 3rem; 
+}
+#chitietright .giohang a {
+    width: 3rem;
+    height: 100%;
+    margin: 0 10rem;
+}
+#chitietright .giohang a img {
+    width: 100%;
+    height: 100%;
+}
 #mota {
     grid-column: 1/3;
     font-size:1.3rem;
@@ -257,6 +269,9 @@ body {
     width: 80%;
     margin: 2rem 5rem;
 }
+#quanlygiohang table tr td:first-child {
+    padding-left: 2rem;
+}
 #quanlygiohang table  th ,form td {
     border: 1px solid #dddddd;
     text-align: left;
@@ -274,14 +289,76 @@ body {
 }
 #quanlygiohang table tr,th {
     border: 1px solid #dddddd;
-    text-align: left;
     padding: 8px;
 }
 #quanlygiohang table tr th{
     background-color: #dddddd;
+    text-align: center;
     height: 4rem;
 }
+#quanlygiohang .pprice {
+    font-size: 1.2rem;
+}
+#quanlygiohang a {
+    width: 10rem;
+    height: 2.5rem;
+    margin-top: 1rem;
+}
+#quanlygiohang a img {
+    width: 100%;
+    height:100%;
+}
 /* -------------------- Giohang ------------------------ */
+/* --------------------- Tao Tai Khoan -------------------------- */
+.wtaotaikhoan {
+    grid-column: 1/3;
+    grid-row: 100%;
+    display: grid;
+}
+.wtaotaikhoan h1 {
+    height: 6rem;
+    text-align: center;
+}
+.wtaotaikhoan form {
+    margin: 0 auto;
+    width: 60%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.wtaotaikhoan form div {
+    display: grid;
+    height: 5rem;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    flex-grow: 1;
+}
+.wtaotaikhoan form div input[type="text"], #ps,#rps {
+    border-radius: 0.3rem;
+    border: 0.1rem solid rgba(43, 43, 43, 0.463);
+    width: 100%;
+    height: 100%;
+    padding: 0 0.5rem;
+    outline: none;
+}
+.wtaotaikhoan form div input[type="submit"] {
+    outline: none;
+    background-color: #0099FF;
+    border: none;
+    height: 3rem;
+    border-radius: 0.3rem;
+    color: white;
+    font-size: 1.5rem;
+}
+.wtaotaikhoan form div input[type="submit"]:hover {
+    opacity: 0.8;
+}
+.wtaotaikhoan form div span[class="err"] {
+    color: red;
+
+}
+/* --------------------- Tao Tai Khoan -------------------------- */
 /* -------------------- Footer ------------------------- */
 #footer {
     width: 100%;

@@ -56,7 +56,7 @@
     <div class="pprice">
         Tổng thành tiền: <?php echo $tongGia; ?> đ
     </div>
-    <a href="pages/GioHang/xlDatHang.php">
-        <img src="img/dathang.png" alt="" width="100">
+    <a href="pages/GioHang/xlDatHang.php" style="display: <?= ($tongGia == 0) ? 'none' : 'block' ?>">
+        <img src="img/dathang.png" alt="">
     </a>
 </div>

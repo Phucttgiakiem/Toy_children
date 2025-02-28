@@ -41,6 +41,7 @@
                         break;
                     case 6:
                         include "pages/TaoTaiKhoan/pIndex.php";
+                        break;
                     default:
                         include "pages/pError.php";
                         break;

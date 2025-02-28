@@ -1,45 +1,40 @@
-<h1>Tạo tài khoản mới</h1>
-<form action="pages/TaoTaiKhoan/xTaoTaiKhoan.php" method="post" onsubmit="return KiemTra()">
-    <div>
-        <span class="label">Tên đăng nhập:</span>
-        <input type="text" id="us" name="us">
-        <span class="err" id="eUS"></span>
-    </div>
-    <div>
-        <span class="label">Mật khẩu:</span>
-        <input type="password" id="ps" name="ps">
-        <span class="err" id="ePS"></span>
-    </div>
-    <div>
-        <span class="label">Nhập lại mật khẩu:</span>
-        <input type="password" id="rps"/>
-        <span class="err" id="eRPS"></span>
-    </div>
-    <div>
-        <span class="label">Tên hiển thị:</span>
-        <input type="text" id="name" name="name">
-        <span class="err" id="eNAME"></span>
-    </div>
-    <div>
-        <span class="label">Địa chỉ:</span>
-        <input type="text" id="add" name="add">
-        <span class="err" id="eADD"></span>
-    </div>
-    <div>
-        <span class="label">Điện thoại:</span>
-        <input type="text" id="tel" name="tel">
-        <span class="err" id="eTEL"></span>
-    </div>
-    <div>
-        <span class="label">Email:</span>
-        <input type="text" id="mail" name="mail">
-        <span class="err" id="eMail"></span>
-    </div>
-    <div>
-        <span class="label"></span>
-        <input type="submit" value="Đăng ký"/>
-    </div>
-</form>
+<div class="wtaotaikhoan">
+    <h1>Tạo tài khoản mới</h1>
+    <form action="pages/TaoTaiKhoan/xlTaoTaiKhoan.php" method="post" onsubmit="return KiemTra()">
+        <div>
+            <input type="text" id="us" name="us" placeholder="Tên đăng nhập">
+            <span class="err" id="eUS"></span>
+        </div>
+        <div>
+            <input type="password" id="ps" name="ps" placeholder="Mật khẩu">
+            <span class="err" id="ePS"></span>
+        </div>
+        <div>
+            <input type="password" id="rps" placeholder="Nhập lại mật khẩu"/>
+            <span class="err" id="eRPS"></span>
+        </div>
+        <div>
+            <input type="text" id="name" name="name" placeholder="Tên hiển thị">
+            <span class="err" id="eNAME"></span>
+        </div>
+        <div>
+            <input type="text" id="add" name="add" placeholder="Địa chỉ">
+            <span class="err" id="eADD"></span>
+        </div>
+        <div>
+            <input type="text" id="tel" name="tel" placeholder="Điện thoại">
+            <span class="err" id="eTEL"></span>
+        </div>
+        <div>
+            <input type="text" id="mail" name="mail" placeholder="Email">
+            <span class="err" id="eMail"></span>
+        </div>
+        <div>
+            <span class="label"></span>
+            <input type="submit" value="Đăng ký"/>
+        </div>
+    </form>
+</div>
 <script type="text/javascript">
     function KiemTra() {
         var co = true;
@@ -66,14 +61,19 @@
         }
         control1 = document.getElementById('rps');
         err = document.getElementById('eRPS');
-        if(control.value != controll.value)
-        {
+        if(control1.value == ""){
             co = false;
-            err.innerHTML = "Nhập lại mật khẩu không trùng";
-        }
-        else
-        {
-            err.innerHTML = "";
+            err.innerHTML = "Nhập lại mật khẩu không được rỗng"
+        }else {
+            if(control.value != control1.value)
+            {
+                co = false;
+                err.innerHTML = "Nhập lại mật khẩu không trùng";
+            }
+            else
+            {
+                err.innerHTML = "";
+            }
         }
         control = document.getElementById('name');
         err= document.getElementById('eNAME');

@@ -2,7 +2,7 @@
     session_start();
     include "../../lib/DataProvider.php";
     include "../../lib/ShoppingCart.php";
-    if(isset($_SESSION["GioHang"]))
+    if(isset($_SESSION["GioHang"]) && !empty($_SESSION["GioHang"]))
     {
         $gioHang = unserialize($_SESSION["GioHang"]);
         $maTaiKhoan = $_SESSION["MaTaiKhoan"];

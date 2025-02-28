@@ -21,7 +21,7 @@
             {
                 if($sl == 0){
                     $gioHang->delete($id);
-                    $SESSION["GioHang"] = serialize($gioHang);
+                    $_SESSION["GioHang"] = serialize($gioHang);
                 }
             }
             DataProvider::ChangeURL("../../index.php?a=5");

@@ -16,9 +16,11 @@
             }
         }
         public function delete($id){
-            for($i = 0; $i < count($this -> listProduct);$i++){
-                if($this->listProduct[$i]->id == $id)
+            for($i = 0; $i < count($this->listProduct);$i++){
+                if($this->listProduct[$i]->id == $id){
                     array_splice($this->listProduct,$i,1);
+                    break;
+                }
             }
         }
         public function add($id){
