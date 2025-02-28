@@ -1,3 +1,3 @@
 <div id="footer">
-    $copy; Design by me
+    Design by me
 </div>
