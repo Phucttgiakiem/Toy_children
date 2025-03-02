@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Nếu truy cập thư mục hoặc file có sẵn, giữ nguyên
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Chuyển hướng tất cả request về thư mục public/
+RewriteRule ^(.*)$ public/$1 [L]
