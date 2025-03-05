@@ -12,9 +12,12 @@
             //     header("Location: /Toy_children/public/index.php?page=1");
             //     exit();
             // }
+            session_start();
+            $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
+            $totalitem = count($shoppingcard);
             $content_page = "../app/views/home/index.php";
        
-            $this->render("/views/layouts/main",['product'=>$products,'content_page' => $content_page]);
+            $this->render("/views/layouts/main",['product'=>$products,'content_page' => $content_page,'totalitem'=>$totalitem]);
         }
         
     }
