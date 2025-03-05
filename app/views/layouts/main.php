@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -7,7 +6,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
-
+        
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,18 +14,19 @@
 
         <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" >
 
         <!-- Libraries Stylesheet -->
-        <link href="assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="public/assets/lib/lightbox/css/lightbox.min.css" >
+        <link rel="stylesheet" href="public/assets/lib/owlcarousel/assets/owl.carousel.min.css" >
 
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.min.css" >
 
         <!-- Template Stylesheet -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="public/assets/css/style.css">
     </head>
 
     <body>
@@ -34,15 +34,16 @@
         
         <?php include_once "../app/views/layouts/header.php" ?>
 
-        <?php include_once "../app/views/layouts/slider.php"?>
+        <div id="main">
+            <?php
+                global $sharedData;
+                $content_page = $sharedData['content_page'];
+                include_once ($content_page);
+            ?>
+        </div>
 
-        <?php
-            global $sharedData;
-            $categories = $sharedData['product'] ?? [];
-            
-        ?>
         
-        <?php include_once "../app/views/home/typeproduct.php"?>
+
         <!-- Featurs Section Start -->
         <!-- <div class="container-fluid featurs py-5">
             <div class="container py-5">
@@ -734,18 +735,19 @@
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
+       
         
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/lib/easing/easing.min.js"></script>
-    <script src="assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="assets/lib/lightbox/js/lightbox.min.js"></script>
-    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="public/assets/lib/easing/easing.min.js"></script>
+    <script src="public/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="public/assets/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="public/assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="assets/js/main.js"></script>
+    <script src="public/assets/js/main.js"></script>
+    <script src="public/assets/js/asyncwithjquery.js"></script>
     </body>
 
 </html>

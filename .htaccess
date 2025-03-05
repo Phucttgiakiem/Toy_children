@@ -1,8 +1,10 @@
 RewriteEngine On
+Options -Indexes
 
-# Nếu truy cập thư mục hoặc file có sẵn, giữ nguyên
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/public/
 
-# Chuyển hướng tất cả request về thư mục public/
-RewriteRule ^(.*)$ public/$1 [L]
+RewriteRule ^(.*)$ public/index.php?url=$1 [NC,QSA]
+

@@ -2,14 +2,14 @@
 class Controller {
     // Phương thức render để tải view
     public function render($view, $data = []) {
-        // Chuyển đổi đường dẫn view thành tuyệt đối
-        $file = "C:/xampp/htdocs/Toy_children/app" . $view . ".php"; 
+        $file = explode("\\core",__DIR__)[0] . $view . ".php";
         
-        // Kiểm tra xem file view có tồn tại không
         if (file_exists($file)) {
-            // Giải nén dữ liệu thành các biến riêng biệt
             extract($data);
-
+            // Nếu có page, thêm nó vào URL trình duyệt bằng cách tạo query string
+            // if ($param !== null) {
+            //     $_GET['page'] = $param;
+            // }
             // Chia sẻ dữ liệu cho toàn bộ layout (header, footer, v.v.)
             global $sharedData;
             $sharedData = $data;

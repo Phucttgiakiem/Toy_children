@@ -48,9 +48,9 @@
                                 <?php foreach($product as $item):?>
 
                                 <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item d-flex flex-column h-100">
-                                        <div class="fruite-img">
-                                            <img src="assets/img/<?=$item['HinhURL']; ?>" class="img-fluid w-100 rounded-top" alt="">
+                                    <div class="rounded position-relative fruite-item d-flex flex-column h-100 " >
+                                        <div class="fruite-img" >
+                                            <img src="public/assets/img/<?=$item['HinhURL']; ?>" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div> -->
                                         <div class="d-flex flex-column justify-content-between p-4 border border-secondary border-top-0 rounded-bottom flex-grow-1">
@@ -58,7 +58,7 @@
                                             <p class="flex-grow-1"><?=$item['MoTa']?></p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0"><?=$item['GiaSanPham'] ?> đ</p>
-                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary detail-pd" data-id="<?= $item['MaSanPham'] ?>"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
                                             </div>
                                         </div>
                                     </div>
@@ -357,8 +357,13 @@
                     </div> 
                 </div> -->
             </div>
-            <div class="container-fluid bg-success">
-                                    Hello
+            <div id="next-step-data" class="container-fluid mt-4">
+                <span class="btn border border-secondary rounded-pill px-3 text-primary me-2 px-4">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </span>
+                <span class="btn border border-secondary rounded-pill px-3 text-primary ms-2 px-4">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
             </div>
         </div>      
     </div>
