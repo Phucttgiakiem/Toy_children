@@ -18,27 +18,27 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" >
 
         <!-- Libraries Stylesheet -->
-        <link rel="stylesheet" href="public/assets/lib/lightbox/css/lightbox.min.css" >
-        <link rel="stylesheet" href="public/assets/lib/owlcarousel/assets/owl.carousel.min.css" >
+        <link rel="stylesheet" href="/Toy_children/public/assets/lib/lightbox/css/lightbox.min.css" >
+        <link rel="stylesheet" href="/Toy_children/public/assets/lib/owlcarousel/assets/owl.carousel.min.css" >
 
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link rel="stylesheet" href="public/assets/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="/Toy_children/public/assets/css/bootstrap.min.css" >
 
         <!-- Template Stylesheet -->
-        <link rel="stylesheet" href="public/assets/css/style.css">
+        <link rel="stylesheet" href="/Toy_children/public/assets/css/style.css">
     </head>
 
     <body>
 
         
-        <?php include_once "../app/views/layouts/header.php" ?>
+        <?php require_once "../app/views/layouts/header.php" ?>
 
         <div id="main">
             <?php
                 global $sharedData;
                 $content_page = $sharedData['content_page'];
-                include_once ($content_page);
+                require_once ($content_page);
             ?>
         </div>
 
@@ -740,14 +740,14 @@
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="public/assets/lib/easing/easing.min.js"></script>
-    <script src="public/assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="public/assets/lib/lightbox/js/lightbox.min.js"></script>
-    <script src="public/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/Toy_children/public/assets/lib/easing/easing.min.js"></script>
+    <script src="/Toy_children/public/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="/Toy_children/public/assets/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/Toy_children/public/assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="public/assets/js/main.js"></script>
-    <script src="public/assets/js/asyncwithjquery.js"></script>
+    <script src="/Toy_children/public/assets/js/main.js"></script>
+    <script src="/Toy_children/public/assets/js/asyncwithjquery.js"></script>
     </body>
 
 </html>

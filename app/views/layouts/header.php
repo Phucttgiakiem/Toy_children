@@ -40,13 +40,13 @@
     </div>
     <div class="container px-0">
         <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">ToyToy Shop</h1></a>
+            <a href="/Toy_children/Home" class="navbar-brand"><h1 class="text-primary display-6">ToyToy Shop</h1></a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="/Toy_children/Home" class="nav-item nav-link active">Trang chủ</a>
                     <a href="shop.html" class="nav-item nav-link">Các sản phẩm</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Danh mục sản phẩm</a>

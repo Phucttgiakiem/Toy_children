@@ -17,8 +17,10 @@
             $this->itemshopping->totalprice = $totalprice;
         }
         public function cardshopping () {
+            session_start();
+            $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
             $content_page = "../app/views/shoppingcard/shoppingcard.php";
-            $this->render("/views/layouts/main",['content_page' => $content_page]);
+            $this->render("/views/layouts/main",['content_page' => $content_page,'shopping_card'=>$shoppingcard]);
         }
         public function Additem (){;
             $this->createitem($_POST['id'], $_POST['img'],$_POST['name'],$_POST['price'],$_POST['quantity'],$_POST['totalprice']);
