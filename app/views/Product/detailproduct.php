@@ -11,7 +11,7 @@
                     <div class="col-lg-6">
                         <div class="border rounded">
                             <a class="d-flex justify-content-center" href="#">
-                                <img src="public/assets/img/<?=$row['HinhURL']?>" class="img-fluid rounded img-ps"  alt="Image">
+                                <img src="/Toy_children/public/assets/img/<?=$row['HinhURL']?>" class="img-fluid rounded img-ps"  alt="Image">
                             </a>
                         </div>
                     </div>
