@@ -22,6 +22,10 @@
             call_user_func_array([$this->controller,$this->method],$this->params);
         }
         private function parseUrl(){
+            // kiểm tra url có tồn tại không, nếu tồn tại thì hàm explode chia chuỗi url thành mảng
+            // filter_var là hàm kiểm tra một biến thỏa mãn với bộ lọc chỉ định
+            // FILTER_SANITIZE_URL là bộ lọc xóa tất cả các ký tự không hợp lệ khỏi chuỗi url
+            //rtrim xóa các ký tự khoảng trắng trong chuỗi
             return isset($_GET['url']) ? explode('/',filter_var(rtrim($_GET['url'],'/'),FILTER_SANITIZE_URL)) : [];
         }
     }

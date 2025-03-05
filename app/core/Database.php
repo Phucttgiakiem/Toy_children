@@ -32,12 +32,19 @@
             return $stmt;
         }
         // Hàm lấy dữ liệu dạng mảng kết hợp
-        public function fetchAll($sql){
-            $result = $this->query($sql);
-            if (!$result) {
-                die("Lỗi truy vấn: " . $this->conn->error); // Dừng chương trình và in lỗi MySQL
+        public function fetchAll($sql,$params = []){
+            $stmt = $this->conn->prepare($sql);
+        
+            if (!empty($params)) {
+                $stmt->bind_param(str_repeat("i", count($params)), ...$params);
             }
-            return $result->fetch_all(MYSQLI_ASSOC);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $data = $result->fetch_all(MYSQLI_ASSOC);
+
+            $stmt->close();
+            return $data ?: [];
         }
         // Hàm lấy một dòng dữ liệu
         public function fetchOne($sql){
