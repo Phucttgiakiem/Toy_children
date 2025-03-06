@@ -44,7 +44,7 @@
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                         <div class="col-lg-12">
-                            <div class="row g-4">
+                            <div class="row g-4 ls-sp">
                                 <?php foreach($product as $item):?>
 
                                 <div class="col-md-6 col-lg-4 col-xl-3">
@@ -358,10 +358,10 @@
                 </div> -->
             </div>
             <div id="next-step-data" class="container-fluid mt-4">
-                <span class="btn border border-secondary rounded-pill px-3 text-primary me-2 px-4">
+                <span class="btn border border-secondary rounded-pill px-3 text-primary me-2 px-4" data-id="1">
                     <i class="fa-solid fa-arrow-left"></i>
                 </span>
-                <span class="btn border border-secondary rounded-pill px-3 text-primary ms-2 px-4">
+                <span class="btn border border-secondary rounded-pill px-3 text-primary ms-2 px-4" data-id="2">
                     <i class="fa-solid fa-arrow-right"></i>
                 </span>
             </div>
