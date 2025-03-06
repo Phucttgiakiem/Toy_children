@@ -2,9 +2,18 @@ $(document).ready(function () {
     let parentbtn = $("#next-step-data");
     let btnstep = parentbtn.children().first();
     let btnnext = parentbtn.children().last();
-    let showpass = $("#showpass");
-    let hidepass = $("#hidepass");
- 
+   
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/i
+            );
+    }
+    const checkPassword = (str) => {
+        var re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        return re.test(str);
+    }
     btnstep.click(function () {
         let page1 = $(this).data("id");
         let parentsp = $(".ls-sp");
@@ -191,6 +200,113 @@ $(document).ready(function () {
             },
         );
     });
+    const createaccount = (username,fullname,email,pass,address,numberphone) => {
+        $.post(
+            "http://localhost/Toy_children/User/handleregister",
+            {
+                username:username,
+                fullname:fullname,
+                email:email,
+                password:pass,
+                address:address,
+                numberphone:numberphone
+            },
+            function (res) {
+                console.log(res.Notification);
+                if(res.errCode != 0){
+                    $(".show-inform h5").text("Thông báo");
+                    $(".show-inform p").text(res.Notification);
+                    $("#exampleModal").modal("show");
+                }else {
+                    window.location.assign("http://" + window.location.hostname + "/Toy_children/User/Index");
+                }
+            }
+        )
+    }
+    //register
+    $(document).on('click','.f-register',function(e){
+        e.preventDefault();
+        let username = $("#res-username").val();
+        let fullname = $("#res-fullname").val();
+        let email = $("#res-email").val();
+        let pass = $("#res-pass").val();
+        let re_pass = $("#res-repass").val();
+        let address = $("#res-address").val();
+        let numberphone = $("#res-numberphone").val();
+
+        // Flag kiểm tra tính hợp lệ
+        let isValid = true;
+
+        if(username == ""){
+            $("#warning-res-username").css("display","block");
+            isValid = false;
+        }else {
+            $("#warning-res-username").css("display","none");
+        }
+        if(fullname == ""){
+            $("#warning-res-fullname").css("display","block");
+            isValid = false;
+        }else {
+            $("#warning-res-fullname").css("display","none");
+        }
+        if(email == ""){
+            $("#warning-res-email").text("Email không được để trống");
+            $("#warning-res-email").css("display","block");
+            isValid = false;
+        }else {
+            if(validateEmail(email) == null){
+                $("#warning-res-email").text("Email không đúng định dạng");
+                $("#warning-res-email").css("display","block");
+                isValid = false;
+            }
+            else{
+                $("#warning-res-email").text("Email không được để trống");
+                $("#warning-res-email").css("display","none");
+            }
+        }
+        if(address == ""){
+            $("#warning-res-address").css("display","block");
+            isValid = false;
+        }else {
+            $("#warning-res-address").css("display","none");
+        }
+        if(numberphone == ""){
+            $("#warning-numberphone").css("display","block");
+            isValid = false;
+        }else {
+            $("#warning-numberphone").css("display","none");
+        }
+        if(pass == ""){
+            $("#warning-res-pass").text("Mật khẩu không được để trống");
+            $("#warning-res-pass").css("display","block");
+            isValid = false;
+        }else {
+            if(!checkPassword(pass)){
+                $("#warning-res-pass").text("Mật khẩu không đúng định dạng, nó phải bảo gồm ít nhất 8 ký tự và chứa 1 chứ hoa, chữ thường, số và 1 ký tự đặc biệt");
+                $("#warning-res-pass").css("display","block");
+                isValid = false;
+            }
+            else {
+                $("#warning-res-pass").text("Mật khẩu không được để trống");
+                $("#warning-res-pass").css("display","none");
+            }
+        }
+        if(re_pass == ""){
+            $("#warning-repass").text("Nhập lại mật khẩu không được để trống");
+            $("#warning-repass").css("display","block");
+            isValid = false;
+        }else {
+            if(re_pass != pass){
+                $("#warning-repass").text("Nội dung nhập không khớp với mật khẩu");
+                $("#warning-repass").css("display","block");
+                isValid = false;
+            }else {
+                $("#warning-repass").css("display","none");
+            }
+        }
+        if(isValid) createaccount(username,fullname,email,pass,address,numberphone);
+    })
+    //login
     $(document).on('click','.f-login',function(e) {
         e.preventDefault();
         let usern = $("#exampleInputusername1").val();
@@ -241,5 +357,6 @@ $(document).ready(function () {
         $.get("/Toy_children/User/handlelogout",()=>{
             window.location.assign("http://" + window.location.hostname + "/Toy_children/Home");
         })
-    })
+    });
+    
 });

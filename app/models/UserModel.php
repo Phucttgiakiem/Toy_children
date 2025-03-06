@@ -9,19 +9,13 @@
             $stmt = $this->fetchOne($sql);
             return $stmt;
         }
-        public function handleregister () {
-            $username = $_POST['newusername'];
-            $password = $_POST['newpass'];
-            $tenhienthi = $_POST['newtenhienthi'];
-            $Diachi = $_POST['newdiachi'];
-            $dienthoai = $_POST['newdienthoai'];
-            $Email = $_POST['newemail'];
+        public function handleregister ($username,$password,$tenhienthi,$Diachi,$dienthoai,$Email) {
             // kiem tra ten tai khoan da co nguoi xu dung hay chua
-            $sql = "SELECT * FROM Taikhoan WHERE BiXoa = 0
-                    AND ( TenDangNhap = '$username' OR MatKhau = '$password' )";
+            $sql = "SELECT * FROM Taikhoan WHERE BiXoa = 0 AND TenDangNhap = '$username'";
             $stmt = $this->fetchOne($sql);
             if(!$stmt){
-                $sql = "INSERT INTO TaiKhoan (TenDangNhap,MatKhau,TenHienThi,DiaChi,DienThoai,Email,MaLoaiTaiKhoan) VALUES (?,?,?,?,?,?,?)";
+                $sql = "INSERT INTO TaiKhoan(TenDangNhap,MatKhau,TenHienThi,DiaChi,DienThoai,Email,MaLoaiTaiKhoan) 
+                VALUES (?,?,?,?,?,?,?)";
                 $params = [$username,$password,$tenhienthi,$Diachi,$dienthoai,$Email,1];
                 $newstmt = $this->execute($sql,$params);
                 if($newstmt){
