@@ -1,7 +1,7 @@
 <?php
     global $sharedData;
     $totalitem = $sharedData['totalitem'];
-    
+    session_start();
 ?>
 <!-- Spinner Start -->
 <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -64,15 +64,29 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
                 </div>
-                <div class="d-flex m-3 me-0">
+                <div class="d-flex m-3 me-0 position-relative">
                     <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
                     <a href="/Toy_children/Checkout/cardshopping" class="position-relative me-4 my-auto shopping-card">
                         <i class="fa fa-shopping-bag fa-2x"></i>
                         <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;"><?=$totalitem?></span>
                     </a>
-                    <a href="#" class="my-auto">
+                    <?php if (!isset($_SESSION["MaTaiKhoan"])) { ?>
+                     <a class="my-auto" href="/Toy_children/User/Index">
                         <i class="fas fa-user fa-2x"></i>
-                    </a>
+                    </a> 
+                    <?php } else {?>
+                    <div class="dropdown my-auto position-relative">
+                        <a href="#"  data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user fa-2x"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Cài đặt</a></li>
+                            <li><a class="dropdown-item" href="#">Xem danh sách hóa đơn</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item" id="logout">Thoát</a></li>
+                        </ul>
+                    </div>
+                    <?php  } ?>
                 </div>
             </div>
         </nav>

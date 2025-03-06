@@ -29,6 +29,7 @@
                 $stmt->bind_param($types,...$params);
             }
             $stmt->execute();
+            $stmt->close();
             return $stmt;
         }
         // Hàm lấy dữ liệu dạng mảng kết hợp
@@ -42,8 +43,6 @@
             $stmt->execute();
             $result = $stmt->get_result();
             $data = $result->fetch_all(MYSQLI_ASSOC);
-
-            $stmt->close();
             return $data ?: [];
         }
         // Hàm lấy một dòng dữ liệu
