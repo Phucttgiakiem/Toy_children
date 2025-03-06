@@ -27,7 +27,7 @@
                 <span style="cursor:pointer">Quên mặt khâu</span>
             </div>
             <div class="mb-3">
-                <span style="cursor:pointer">Đăng ký tài khoản</span>
+                <a href="/Toy_children/User/Register" style="cursor:pointer">Đăng ký tài khoản</span>
             </div>
             <button type="submit" class="btn btn-primary f-login">Đăng nhập</button>
         </form>

@@ -19,16 +19,30 @@
         }
         // Hàm thực thi truy vấn với tham số (dùng prepared statement)
         public function execute($sql,$params){
-            $stml = $this->conn->prepare($sql);
+            $stmt = $this->conn->prepare($sql);
             if($stmt == false){
                 die("lỗi prepare: ".$this->conn->error);
             }
             // Gán tham số (phải truyền kiểu dữ liệu trước, ví dụ "s" cho string, "i" cho int)
             if(!empty($params)){
-                $types = str_repeat("s",count($params)); //Mặc định tất cả là string
-                $stmt->bind_param($types,...$params);
+                // Giả sử bạn biết rõ kiểu dữ liệu của mỗi tham số, ví dụ:
+                $types = '';
+                foreach ($params as $param) {
+                    if (is_int($param)) {
+                        $types .= 'i';  // 'i' cho integer
+                    } elseif (is_double($param)) {
+                        $types .= 'd';  // 'd' cho double
+                    } else {
+                        $types .= 's';  // 's' cho string
+                    }
+                }
+
+                $stmt->bind_param($types, ...$params);
+
             }
-            $stmt->execute();
+            if ($stmt->execute() === false) {
+                die("lỗi execute: " . $this->conn->error);
+            }
             $stmt->close();
             return $stmt;
         }

@@ -12,6 +12,33 @@
             $content_page = "../app/views/user/login.php";
             $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem]);
         }
+        public function Register(){
+            session_start();
+            $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
+            $totalitem = count($shoppingcard);
+            $content_page = "../app/views/user/register.php";
+            $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem]);
+        }
+        public function handleregister () {
+            $username = $_POST['username'];
+            $fullname = $_POST['fullname'];
+            $numberphone = $_POST['numberphone'];
+            $email = $_POST['email'];
+            $pass = $_POST['password'];
+            $address = $_POST['address'];
+            $rs = $this->userModel->handleregister($username,$pass,$fullname,$address,$numberphone,$email);
+            header('Content-Type: application/json');
+            if($rs == 1){
+                echo json_encode(array("errCode" => 0,"Notification" => "Tạo tài khoản thành công"));
+            }else {
+                if($rs == 2){
+                    echo json_encode(array("errCode" => -1,"Notification" => "Không thể tạo được tài khoản, thử lại !!!"));
+                }
+                else {
+                    echo json_encode(array("errCode" => 1,"Notification" => "Tên đăng nhập đã trùng với tài khoản khác"));
+                }
+            }
+        }
         public function handlelogin () {
             $username = $_POST['username'];
             $password = $_POST['password'];
