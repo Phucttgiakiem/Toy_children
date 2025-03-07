@@ -51,7 +51,24 @@
             $stmt = $this->conn->prepare($sql);
         
             if (!empty($params)) {
-                $stmt->bind_param(str_repeat("i", count($params)), ...$params);
+                // Xây dựng chuỗi kiểu dữ liệu bind_param
+                $types = '';
+                foreach ($params as $param) {
+                    if (is_int($param)) {
+                        $types .= 'i'; // Kiểu integer
+                    } elseif (is_double($param)) {
+                        $types .= 'd'; // Kiểu double
+                    } elseif (is_string($param)) {
+                        $types .= 's'; // Kiểu string
+                    } elseif ($param instanceof \DateTime) {
+                        $types .= 's'; // Kiểu string cho datetime
+                        $param = $param->format('Y-m-d H:i:s'); // Định dạng datetime thành chuỗi
+                    } else {
+                        $types .= 's'; // Mặc định là string nếu không phải kiểu dữ liệu trên
+                    }
+                }
+                // Bind các tham số
+                 $stmt->bind_param($types, ...$params);
             }
 
             $stmt->execute();
