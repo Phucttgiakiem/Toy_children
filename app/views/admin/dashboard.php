@@ -34,7 +34,7 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="/Toy_children/public/assets/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/Toy_children/public/assets/css/plugins.min.css" />
     <link rel="stylesheet" href="/Toy_children/public/assets/css/kaiadmin.min.css" />
 
@@ -43,7 +43,7 @@
   </head>
   <body>
     <div class="wrapper">
-      
+    
         <!-- <div class="container">
           <div class="page-inner">
             <div
@@ -666,10 +666,26 @@
           </div>
         </div> -->
 
+        <div  id="myModal" class="modal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+              </div>
+              <div class="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="save-changes">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <?php require_once "../app/views/admin/layouts/header.php" ?>
         <?php require_once "../app/views/admin/layouts/sidebar.php" ?>
         <?php
-               // global $sharedData;
                 $content_page = $sharedData['content_page'];
                 require_once ($content_page);
         ?>
@@ -872,41 +888,36 @@
       <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
-    <script src="/Toy_children/public/assets/js/core/jquery-3.7.1.min.js"></script>
-    <script src="/Toy_children/public/assets/js/core/popper.min.js"></script>
-    <script src="/Toy_children/public/assets/js/core/bootstrap.min.js"></script>
+    <!-- 1. Popper.js -->
+    <!-- <script src="/Toy_children/public/assets/js/core/popper.min.js"></script>
 
-    <!-- jQuery Scrollbar -->
-    <script src="/Toy_children/public/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+     2. Bootstrap JS (nếu không dùng bootstrap.bundle.min.js) -->
+    <!-- <script src="/Toy_children/public/assets/js/core/bootstrap.min.js"></script> -->
 
-    <!-- Chart JS -->
-    <script src="/Toy_children/public/assets/js/plugin/chart.js/chart.min.js"></script>
+      <!-- jQuery (nếu bạn cần) -->
+      <!-- <script src="/Toy_children/public/assets/js/core/jquery-3.7.1.min.js"></script> -->
+       <!-- Core JS Files -->
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <!-- Bootstrap 5 CSS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      <!-- Các thư viện khác -->
+      <script src="/Toy_children/public/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+      <script src="/Toy_children/public/assets/js/plugin/chart.js/chart.min.js"></script>
+      <script src="/Toy_children/public/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
-    <!-- jQuery Sparkline -->
-    <script src="/Toy_children/public/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+      <!-- Các thư viện khác của bạn -->
+      <script src="/Toy_children/public/assets/js/adminwithjquery.js"></script>
+      <script src="/Toy_children/public/assets/js/plugin/chart-circle/circles.min.js"></script>
+      <script src="/Toy_children/public/assets/js/plugin/datatables/datatables.min.js"></script>
+      <script src="/Toy_children/public/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+      <script src="/Toy_children/public/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+      <script src="/Toy_children/public/assets/js/plugin/jsvectormap/world.js"></script>
+      <script src="/Toy_children/public/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+      <script src="/Toy_children/public/assets/js/kaiadmin.min.js"></script>
+      <script src="/Toy_children/public/assets/js/setting-demo.js"></script>
+      <script src="/Toy_children/public/assets/js/demo.js"></script>
 
-    <!-- Chart Circle -->
-    <script src="/Toy_children/public/assets/js/plugin/chart-circle/circles.min.js"></script>
-
-    <!-- Datatables -->
-    <script src="/Toy_children/public/assets/js/plugin/datatables/datatables.min.js"></script>
-
-    <!-- Bootstrap Notify -->
-    <script src="/Toy_children/public/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-
-    <!-- jQuery Vector Maps -->
-    <script src="/Toy_children/public/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
-    <script src="/Toy_children/public/assets/js/plugin/jsvectormap/world.js"></script>
-
-    <!-- Sweet Alert -->
-    <script src="/Toy_children/public/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
-
-    <!-- Kaiadmin JS -->
-    <script src="/Toy_children/public/assets/js/kaiadmin.min.js"></script>
-
-    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="/Toy_children/public/assets/js/setting-demo.js"></script>
-    <script src="/Toy_children/public/assets/js/demo.js"></script>
     <script>
       $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
         type: "line",

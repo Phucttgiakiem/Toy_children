@@ -1,36 +1,19 @@
-<?php
-        global $sharedData;
-        $products = $sharedData['products'];
+<?php 
+    global $sharedData;
+    $products = $sharedData['products'];
+    $totalpages = $sharedData['totalpages'];
+    $page = $sharedData['page'];
 ?>
 <div class="container">
         <div class="page-inner">
         <div class="page-header">
             <h3 class="fw-bold mb-3">DataTables.Net</h3>
-            <ul class="breadcrumbs mb-3">
-            <li class="nav-home">
-                <a href="#">
-                <i class="icon-home"></i>
-                </a>
-            </li>
-            <li class="separator">
-                <i class="icon-arrow-right"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">Tables</a>
-            </li>
-            <li class="separator">
-                <i class="icon-arrow-right"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">Datatables</a>
-            </li>
-            </ul>
         </div>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                 <div class="d-flex align-items-center">
-                    <h4 class="card-title">Danh sách đơn đặt hàng</h4>
+                    <h4 class="card-title">Danh sách sản phẩm</h4>
                 </div>
                 </div>
                 <div class="card-body">
@@ -129,28 +112,44 @@
                     <thead>
                         <tr>
                         <th>STT</th>
-                        <th>Tổng tiền đơn hàng</th>
-                        <th>Ngày tạo</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th>Ngày nhập</th>
                         <th style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if(count($bills) > 0){
+                    <?php if(count($products) > 0){
                         $stt = 1;
-                        foreach($bills as $item):
+                        foreach($products as $item):
                     ?>
                         <tr>
                             <td><?=$stt ?></td>
-                            <td><?=$item['TongThanhTien']?> đ</td>
-                            <td><?=$item['NgayLap']?></td>
+                            <td><?=$item['TenSanPham']?></td>
+                            <td><img src='/Toy_children/public/assets/img/<?php echo $item['HinhURL']; ?>' width='50px' height='50px'></td>
+                            <td><?=$item['NgayNhap']?></td>
                             <td>
                                 <div class="form-button-action">
                                 <a
-                                    href="/Toy_children/admin/bill/detail/<?=$item['MaDonDatHang'] ?>"
+                                    href="/Toy_children/admin/Product/detail/<?=$item['MaSanPham'] ?>"
+                                    class="btn btn-link btn-info btn-lg"
+                                    id="Detail"
+                                >
+                                    <i class="fa-solid fa-circle-info"></i>
+                                </a>
+                                <a
+                                    href="/Toy_children/admin/Product/detail/<?=$item['MaSanPham'] ?>"
                                     class="btn btn-link btn-warning btn-lg"
-                                    data-id="<?=$item['MaDonDatHang'] ?>"
+                                    id="Detail"
                                 >
                                     <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a
+                                    href="/Toy_children/admin/Product/detail/<?=$item['MaSanPham'] ?>"
+                                    class="btn btn-link btn-danger btn-lg"
+                                    id="Detail"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
                                 </a>
                                 </div>
                             </td>
@@ -159,6 +158,33 @@
                     </tbody>
                     </table>
                 </div>
+                <div class="d-flex justify-content-end">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                        
+                            <li class="page-item">
+                                <a class="page-link" href="/Toy_children/admin/Product/index/<?php echo 1 ?>" tabindex="-1">Previous</a>
+                            </li>
+                        
+                            <?php 
+                                foreach(range(1, $totalpages) as $index){
+                                    if($index == $page){
+                                        echo "<li class='page-item active'>
+                                                <a class='page-link' href='/Toy_children/admin/Product/index/$index'>$index</a>
+                                            </li>";
+                                    } else {
+                                        echo "<li class='page-item'>
+                                                <a class='page-link' href='/Toy_children/admin/Product/index/$index'>$index</a>
+                                            </li>";
+                                    }
+                                }
+                            ?>
+                            <li class="page-item">
+                                <a class="page-link" href="/Toy_children/admin/Product/index/<?php echo $totalpages ?>">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
                 </div>
             </div>
             </div>
@@ -166,61 +192,3 @@
         </div>
     </div>
 </div>
-<!-- <script>
-      $(document).ready(function () {
-        $("#basic-datatables").DataTable({});
-
-        $("#multi-filter-select").DataTable({
-          pageLength: 5,
-          initComplete: function () {
-            this.api()
-              .columns()
-              .every(function () {
-                var column = this;
-                var select = $(
-                  '<select class="form-select"><option value=""></option></select>'
-                )
-                  .appendTo($(column.footer()).empty())
-                  .on("change", function () {
-                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                    column
-                      .search(val ? "^" + val + "$" : "", true, false)
-                      .draw();
-                  });
-
-                column
-                  .data()
-                  .unique()
-                  .sort()
-                  .each(function (d, j) {
-                    select.append(
-                      '<option value="' + d + '">' + d + "</option>"
-                    );
-                  });
-              });
-          },
-        });
-
-        // Add Row
-        $("#add-row").DataTable({
-          pageLength: 5,
-        });
-
-        var action =
-          '<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-        $("#addRowButton").click(function () {
-          $("#add-row")
-            .dataTable()
-            .fnAddData([
-              $("#addName").val(),
-              $("#addPosition").val(),
-              $("#addOffice").val(),
-              action,
-            ]);
-          $("#addRowModal").modal("hide");
-        });
-      });
-    </script> -->
-    

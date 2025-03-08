@@ -49,6 +49,10 @@
                 $_SESSION["MaTaiKhoan"] = $rs["MaTaiKhoan"];
                 $_SESSION["MaLoaiTaiKhoan"] = $rs["MaLoaiTaiKhoan"];
                 $_SESSION["TenHienThi"] = $rs["TenHienThi"];
+                if ($rs['MaLoaiTaiKhoan'] == 2) {
+                    echo json_encode(array("errCode" => 1, "Notification" => "Đăng nhập thành công", "redirect" => "/Toy_children/admin/"));
+                } 
+                else
                 echo json_encode(array("errCode"=>1,"Notification" => "Chúc bạn có trải nghiệm mua sắm vui vẻ"));
             }
             else {
