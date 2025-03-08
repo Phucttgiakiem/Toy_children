@@ -190,18 +190,18 @@ Circles.create({
 })
 
 //Notify
-$.notify({
-	icon: 'icon-bell',
-	title: 'Kaiadmin',
-	message: 'Premium Bootstrap 5 Admin Dashboard',
-},{
-	type: 'secondary',
-	placement: {
-		from: "bottom",
-		align: "right"
-	},
-	time: 1000,
-});
+// $.notify({
+// 	icon: 'icon-bell',
+// 	title: 'Kaiadmin',
+// 	message: 'Premium Bootstrap 5 Admin Dashboard',
+// },{
+// 	type: 'secondary',
+// 	placement: {
+// 		from: "bottom",
+// 		align: "right"
+// 	},
+// 	time: 1000,
+// });
 
 // Jsvectormap
 var world_map = new jsVectorMap({
@@ -267,7 +267,7 @@ var world_map = new jsVectorMap({
 
 //Chart
 
-var ctx = document.getElementById('statisticsChart').getContext('2d');
+/* var ctx = document.getElementById('statisticsChart').getContext('2d');
 
 var statisticsChart = new Chart(ctx, {
 	type: 'line',
@@ -360,9 +360,9 @@ var statisticsChart = new Chart(ctx, {
 			return text.join(''); 
 		}  
 	}
-});
+}); */
 
-var myLegendContainer = document.getElementById("myChartLegend");
+/* var myLegendContainer = document.getElementById("myChartLegend");
 
 // generate HTML legend
 myLegendContainer.innerHTML = statisticsChart.generateLegend();
@@ -418,7 +418,7 @@ var myDailySalesChart = new Chart(dailySalesChart, {
 			]
 		}
 	}
-});
+}); */
 
 $("#activeUsersChart").sparkline([112,109,120,107,110,85,87,90,102,109,120,99,110,85,87,94], {
 	type: 'bar',

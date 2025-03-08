@@ -43,7 +43,7 @@
                 <div class="collapse" id="forms1">
                     <ul class="nav nav-collapse">
                     <li>
-                        <a href="#">
+                        <a href="/Toy_children/admin/bill">
                         <span class="sub-item">Các hóa đơn</span>
                         </a>
                     </li>
@@ -90,7 +90,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="forms/forms.html">
+                        <a href="/Toy_children/admin/product">
                         <span class="sub-item">sản phẩm</span>
                         </a>
                     </li>

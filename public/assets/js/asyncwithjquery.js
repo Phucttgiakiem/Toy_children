@@ -335,7 +335,12 @@ $(document).ready(function () {
                         $("#exampleModal").modal("show");
                     }
                     else {
-                        window.location.assign("http://" + window.location.hostname + "/Toy_children/Home");
+                        // Kiểm tra nếu có cần chuyển hướng
+                        if (res.redirect) {
+                            window.location.assign(res.redirect);
+                        } else {
+                            window.location.assign("http://" + window.location.hostname + "/Toy_children/Home");
+                        }
                     }
                 } 
             )
