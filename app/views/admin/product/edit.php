@@ -67,6 +67,16 @@
                         />
                     </div>
                     <div class="form-group">
+                        <label for="disableinput">Giá bán (đ)</label>
+                        <input
+                        type="number"
+                        class="form-control"
+                        id="giaban"
+                        min="0"
+                        value="<?=$product['GiaSanPham']?>"
+                        />
+                    </div>
+                    <div class="form-group">
                         <label for="disableinput">Mô tả sản phẩm</label>
                         <textarea class="form-control" rows="3" id="mota">
                         <?=$product['MoTa']?>

@@ -78,7 +78,16 @@
         }
         // Hàm lấy một dòng dữ liệu
         public function fetchOne($sql){
+            // Thực thi truy vấn
             $result = $this->query($sql);
+            
+            // Kiểm tra nếu truy vấn thất bại (result là false)
+            if (!$result) {
+                // In thông báo lỗi hoặc log để kiểm tra nguyên nhân
+                die("Lỗi truy vấn: " . $this->conn->error);  // Nếu sử dụng MySQLi
+            }
+
+            // Nếu truy vấn thành công, lấy dữ liệu
             return $result->fetch_assoc();
         }
         //Hàm đóng kết nối

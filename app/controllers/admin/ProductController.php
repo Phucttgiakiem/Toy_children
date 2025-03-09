@@ -32,5 +32,68 @@
             $content_page = "../app/views/admin/product/edit.php";
             $this->render("/views/admin/dashboard",['product'=>$product,'content_page' => $content_page,'hangsx'=>$hangsx,'loaisp'=>$loaisp]);
         }
+        public function update(){
+
+            try {
+                $id = (int)$_POST['id'];
+                $name = $_POST['namesp'];
+                $motasp = $_POST['motasp'];
+                $hangsx = (int)$_POST['hangsx'];
+                $soluongton = (int)$_POST['soluongton'];
+                $soluongban = (int)$_POST['soluongban'];
+                $giaban =(int)$_POST['giaban'];
+                $loaisp =(int)$_POST['loaisp'];
+                $file = $_FILES['file'];
+                $newFileName = "";
+             // Định dạng JSON để AJAX nhận đúng kiểu dữ liệu
+                header('Content-Type: application/json');
+                // Kiểm tra file có được tải lên không
+                if (isset($_FILES['file'])) {
+                    // Kiểm tra lỗi upload
+                    if ($file['error'] !== UPLOAD_ERR_OK) {
+                        throw new Exception(" Lỗi upload file: " . getUploadError($file['error']));
+                    }
+                
+                    $targetDir = "C:/xampp/htdocs/Toy_children/public/assets/img"; // Dùng / thay vì \
+                
+                    // Kiểm tra thư mục có tồn tại không, nếu không thì tạo
+                    if (!file_exists($targetDir)) {
+                        mkdir($targetDir, 0777, true);
+                    }
+                    // Xử lý tên file tránh trùng lặp
+                    $fileName = pathinfo($file["name"], PATHINFO_FILENAME);
+                    $fileExt = pathinfo($file["name"], PATHINFO_EXTENSION);
+                    $newFileName = $fileName . "_" . time() . "." . $fileExt;
+                    $targetFile = $targetDir . "/" . $newFileName; // Dùng / thay vì \
+                
+                    // Di chuyển file từ tmp vào thư mục đích
+                    if (!move_uploaded_file($file["tmp_name"], $targetFile)) {
+                        throw new Exception(" Lỗi: Không thể di chuyển file. Kiểm tra quyền thư mục hoặc dung lượng ổ đĩa.");
+                    }
+                }
+            
+                $sql = "";
+                $params = null;
+                if($newFileName == ""){
+                    $sql = "UPDATE SanPham SET TenSanPham = ?, MoTa = ?, SoLuongTon = ?, SoLuongBan = ?, GiaSanPham = ?, HinhURL = HinhURL, MaHangSanXuat = ?, MaLoaiSanPham = ? WHERE MaSanPham = ?";
+                    $params = [$name, $motasp, $soluongton, $soluongban, $giaban, $hangsx, $loaisp, $id];
+                }else{
+                    $sql = "UPDATE SanPham SET TenSanPham = ?, MoTa = ?, SoLuongTon = ?, SoLuongBan = ?, GiaSanPham = ?, HinhURL = ?, MaHangSanXuat = ?, MaLoaiSanPham = ? WHERE MaSanPham = ?";
+                    $params = [$name, $motasp, $soluongton, $soluongban, $giaban, $newFileName, $hangsx, $loaisp, $id];
+                }
+                $rs = $this->productModel->updateProduct($sql,$params);
+                if($rs){
+                    echo json_encode(["status"=>"success","message"=>"Cập nhật sản phẩm thành công"]);
+                }else{
+                    echo json_encode(["status"=>"error","message"=>"Cập nhật sản phẩm thất bại"]);
+                }
+                // Trả về JSON response cho AJAX
+               // echo json_encode(["status" => "success", "message" => " File đã được tải lên thành công!", "file" => $newFileName]);
+            } catch (Exception $e) {
+                header('Content-Type: application/json');
+
+                echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+            }
+         }
     }
 ?>

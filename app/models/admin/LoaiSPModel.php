@@ -9,5 +9,14 @@
             }
             return $stmt; 
         }
+        public function getOneLoaiSP($id){
+            $sql = "SELECT * FROM LoaiSanPham WHERE MaLoaiSanPham = $id";
+            $stmt = $this->fetchOne($sql);
+            return $stmt ? $stmt : null;
+        }
+        public function updateLoaiSP($sql,$params){
+            $stmt = $this->execute($sql,$params);
+            return $stmt;
+        }
     }
 ?>

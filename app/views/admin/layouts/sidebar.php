@@ -85,12 +85,12 @@
                 <div class="collapse" id="forms3">
                     <ul class="nav nav-collapse">
                     <li>
-                        <a href="forms/forms.html">
+                        <a href="/Toy_children/admin/Typeproduct">
                         <span class="sub-item">Loại sản phẩm</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/Toy_children/admin/product">
+                        <a href="/Toy_children/admin/Product">
                         <span class="sub-item">sản phẩm</span>
                         </a>
                     </li>

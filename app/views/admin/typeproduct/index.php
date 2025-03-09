@@ -1,8 +1,6 @@
 <?php 
     global $sharedData;
-    $products = $sharedData['products'];
-    $totalpages = $sharedData['totalpages'];
-    $page = $sharedData['page'];
+    $loaisps = $sharedData['loaisp'];
 ?>
 <div class="container">
         <div class="page-inner">
@@ -13,19 +11,18 @@
             <div class="card">
                 <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center px-4 py-2">
-                    <h4 class="card-title">Danh sách sản phẩm</h4>
+                    <h4 class="card-title">Danh sách loại sản phẩm</h4>
                     <div>
                         <a
-                        href="/Toy_children/admin/Product/create"
+                        href="/Toy_children/admin/Typeproduct/create"
                         class="btn btn-success"
                         >
                             Tạo mới
                         </a>
                     </div>
                 </div>
-                </div>
                 <div class="card-body">
-                
+                <!-- Modal -->
                 <div
                     class="modal fade"
                     id="addRowModal"
@@ -33,7 +30,7 @@
                     role="dialog"
                     aria-hidden="true"
                 >
-                  <!--  <div class="modal-dialog" role="document">
+                    <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header border-0">
                         <h5 class="modal-title">
@@ -109,8 +106,8 @@
                         </button>
                         </div>
                     </div>
-                    </div>-->
-                </div> 
+                    </div>
+                </div>
 
                 <div class="table-responsive">
                     <table
@@ -120,40 +117,29 @@
                     <thead>
                         <tr>
                         <th>STT</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Hình ảnh</th>
-                        <th>Ngày nhập</th>
+                        <th>Tên loại sản phẩm</th>
                         <th style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if(count($products) > 0){
+                    <?php if($loaisps && count($loaisps) > 0 ){
                         $stt = 1;
-                        foreach($products as $item):
+                        foreach($loaisps as $item):
                     ?>
                         <tr>
                             <td><?=$stt ?></td>
-                            <td><?=$item['TenSanPham']?></td>
-                            <td><img src='/Toy_children/public/assets/img/<?php echo $item['HinhURL']; ?>' width='50px' height='50px'></td>
-                            <td><?=$item['NgayNhap']?></td>
+                            <td><?=$item['TenLoaiSanPham']?></td>
                             <td>
                                 <div class="form-button-action">
                                 <a
-                                    href="/Toy_children/admin/Product/detail/<?=$item['MaSanPham'] ?>"
-                                    class="btn btn-link btn-info btn-lg"
-                                    id="Detail"
-                                >
-                                    <i class="fa-solid fa-circle-info"></i>
-                                </a>
-                                <a
-                                    href="/Toy_children/admin/Product/edit/<?=$item['MaSanPham'] ?>"
+                                    href="/Toy_children/admin/Typeproduct/edit/<?=$item['MaLoaiSanPham'] ?>"
                                     class="btn btn-link btn-warning btn-lg"
                                     id="Detail"
                                 >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                                 <a
-                                    href="/Toy_children/admin/Product/detail/<?=$item['MaSanPham'] ?>"
+                                    href="/Toy_children/admin/Typeproduct/delete/<?=$item['MaLoaiSanPham'] ?>"
                                     class="btn btn-link btn-danger btn-lg"
                                     id="Detail"
                                 >
@@ -165,34 +151,6 @@
                         <?php $stt++; endforeach; } ?>
                     </tbody>
                     </table>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                        
-                            <li class="page-item">
-                                <a class="page-link" href="/Toy_children/admin/Product/index/<?php echo 1 ?>" tabindex="-1">Previous</a>
-                            </li>
-                        
-                            <?php 
-                                foreach(range(1, $totalpages) as $index){
-                                    if($index == $page){
-                                        echo "<li class='page-item active'>
-                                                <a class='page-link' href='/Toy_children/admin/Product/index/$index'>$index</a>
-                                            </li>";
-                                    } else {
-                                        echo "<li class='page-item'>
-                                                <a class='page-link' href='/Toy_children/admin/Product/index/$index'>$index</a>
-                                            </li>";
-                                    }
-                                }
-                            ?>
-                            <li class="page-item">
-                                <a class="page-link" href="/Toy_children/admin/Product/index/<?php echo $totalpages ?>">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
                 </div>
             </div>
             </div>
