@@ -69,10 +69,11 @@ $(document).ready(function () {
     //cập nhật sản phẩm
     $("#updateProduct").click(function(e){
         let id =  $(this).data("id");
-        let hangsp = $("#hangsx").val();
+        let hangsx = $("#hangsx").val();
         let loaisp = $("#loaisp").val();
         let soluongton = $("#soluongton").val();
         let soluongban = $("#soluongban").val();
+        let giaban = $("#giaban").val();
         let file = $("#inputGroupFile01")[0].files[0];
         let namesp = $("#tensanpham").val().trim();
         let motasp = $("#mota").val().trim();
@@ -101,27 +102,97 @@ $(document).ready(function () {
             $(emptymota).removeClass("text-danger");
         }
         
-        // let formData = new FormData();
-        // formData.append("id",id);
-        // formData.append("name",name);
-        // formData.append("price",price);
-        // formData.append("description",description);
-        // formData.append("category",category);
-        // formData.append("file",file);
-        // $.ajax({
-        //     url: "http://" + window.location.hostname + "/Toy_children/admin/Product/updateProduct",
-        //     type: "POST",
-        //     data: formData,
-        //     contentType: false,
-        //     processData: false,
-        //     success: function (res) {
-        //         if (res.status_rs == 1) {
-        //             showModal('error',"lỗi cập nhật sản phẩm, thử lại !!!");
-        //         } else {
-        //             showModal('success',"Cập nhật sản phẩm thành công !!!");
-        //         }
-        //     }
-        // })
+        let formData = new FormData();
+        formData.append("id",id);
+        formData.append("namesp",namesp);
+        formData.append("motasp",motasp);
+        formData.append("giaban",giaban);
+        formData.append("hangsx",hangsx);
+        formData.append("loaisp",loaisp);
+        formData.append("soluongton",soluongton);
+        formData.append("soluongban",soluongban);
+        formData.append('file', file);
+        $.ajax({
+            url: "/Toy_children/admin/Product/update",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                showModal(res.status, res.message);
+                if(res.status == "success"){
+                    setTimeout(function(){
+                        window.location.assign
+                        ("http://" + window.location.hostname + "/Toy_children/admin/Product");
+                    },1100);
+                }
+                
+            }
+        })
+    })
+    // xử lý với loại sản phẩm
+    $("#createtypeProduct").click(function(e){
+        let typepd = $("#loaisanphammoi").val();
+        let notice = $("#loaisp-notice");
+        let isvalid = true;
+        if(typepd == ""){
+            $("#loaisanphammoi").addClass("border-danger");
+            $(notice).addClass("text-danger");
+            isvalid = false;
+        }
+        else {
+            $("#loaisanphammoi").removeClass("border-danger");
+            $(notice).removeClass("text-danger");
+        }
+        if(isvalid){
+            $.post("/Toy_children/admin/Typeproduct/createitem",
+                {
+                    nametypepd: typepd
+                },
+                function (res) {
+                    console.log(res);
+                    showModal(res.status, res.message);
+                    if(res.status == "success"){
+                        setTimeout(function(){
+                            window.location.assign
+                            ("http://" + window.location.hostname + "/Toy_children/admin/Typeproduct");
+                        },1100);
+                    }
+                }
+            )
+        }
+    })
+    $('#updatetypeProduct').click(function(e){
+        let id = $(this).data("id");
+        let typepd = $("#tenloaisanpham").val();
+        let notice = $("#tenlsp-notice");
+        let isvalid = true;
+        if(typepd == ""){
+            $("#tenloaisanpham").addClass("border-danger");
+            $(notice).addClass("text-danger");
+            isvalid = false;
+        }
+        else {
+            $("#tenloaisanpham").removeClass("border-danger");
+            $(notice).removeClass("text-danger");
+        }
+        if(isvalid){
+            $.post("/Toy_children/admin/Typeproduct/update",
+                {
+                    id: id,
+                    nametypepd: typepd
+                },
+                function (res) {
+                    showModal(res.status, res.message);
+                    if(res.status == "success"){
+                        setTimeout(function(){
+                            window.location.assign
+                            ("http://" + window.location.hostname + "/Toy_children/admin/Typeproduct");
+                        },1100);
+                    }
+                }
+            )
+        }
     })
 })
     

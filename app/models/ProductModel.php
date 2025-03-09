@@ -19,15 +19,17 @@
             $sql = "SELECT s.MaSanPham, s.TenSanPham, s.GiaSanPham,s.SoLuongTon,s.SoLuongBan,s.SoLuocXem,s.HinhURL,s.MoTa,h.TenHangSanXuat,l.TenLoaiSanPham,h.MaHangSanXuat,l.MaLoaiSanPham FROM
             SanPham s,HangSanXuat h, LoaiSanPham l WHERE s.BiXoa = 0 AND s.MaHangSanXuat = h.MaHangSanXuat AND s.MaLoaiSanPham = l.MaLoaiSanPham AND s.MaSanPham = $id";
             $stmt = $this->fetchOne($sql);
-            if (!$stmt){
-                return "error 404";
-            }
-            return $stmt;
+            
+            return $stmt ? $stmt : null;
         }
         public function getCountProduct(){
             $sql = "SELECT COUNT(*) AS total FROM SanPham WHERE BiXoa = 0";
             $stmt = $this->fetchOne($sql);
             return $stmt['total'];
+        }
+        public function updateProduct($sql,$params){
+            $stmt = $this->execute($sql,$params);
+            return $stmt;
         }
     }
 ?>
