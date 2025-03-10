@@ -64,12 +64,7 @@
                 <div class="collapse" id="forms2">
                     <ul class="nav nav-collapse">
                     <li>
-                        <a href="forms/forms.html">
-                        <span class="sub-item">quyền người dùng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="forms/forms.html">
+                        <a href="/Toy_children/admin/account">
                         <span class="sub-item">danh sách người dùng</span>
                         </a>
                     </li>
@@ -98,7 +93,7 @@
                 </div>
                 </li>
                 <li class="nav-item">
-                <a href="#tables">
+                <a href="/Toy_children/admin/Hangsanxuat">
                     <i class="fa-solid fa-industry"></i>
                     <p>Quản lý hãng sản xuất</p>
                 </a>

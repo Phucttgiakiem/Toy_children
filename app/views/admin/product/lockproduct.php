@@ -16,19 +16,10 @@
                     <h4 class="card-title">Danh sách sản phẩm</h4>
                     <div class="flex-grow-1">
                         <a
-                            href="/Toy_children/admin/Product/lockitem"
-                            class="btn"
-                            >
-                            <i class="fa-solid fa-house-lock fs-3 text-success"></i>
-                        </a>
-                        
-                    </div>
-                    <div>
-                        <a
-                        href="/Toy_children/admin/Product/create"
-                        class="btn btn-success"
+                        href="/Toy_children/admin/Product"
+                        class="btn"
                         >
-                            Tạo mới
+                            <i class="fa-solid fa-right-from-bracket fs-3 text-success" style="rotate:180deg"></i>
                         </a>
                     </div>
                 </div>
@@ -154,28 +145,33 @@
                                 <a
                                     href="/Toy_children/admin/Product/detail/<?=$item['MaSanPham'] ?>"
                                     class="btn btn-link btn-info btn-lg"
-                            
+                                    id="Detail"
                                 >
                                     <i class="fa-solid fa-circle-info"></i>
                                 </a>
                                 <a
                                     href="/Toy_children/admin/Product/edit/<?=$item['MaSanPham'] ?>"
                                     class="btn btn-link btn-warning btn-lg"
-                                    
+                                    id="Detail"
                                 >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                                 <a
-                                    href="/Toy_children/admin/Product/delete/<?=$item['MaSanPham'] ?>"
+                                    href="/Toy_children/admin/Product/detail/<?=$item['MaSanPham'] ?>"
                                     class="btn btn-link btn-danger btn-lg"
-                                    
+                                    id="Detail"
                                 >
-                                    <i class="fa-solid fa-trash"></i>
+                                    <i class="fa-solid fa-lock"></i>
                                 </a>
                                 </div>
                             </td>
                         </tr>
-                        <?php $stt++; endforeach; } ?>
+                        <?php $stt++; endforeach; }
+                            else {
+
+                                echo "<tr><td colspan='6'>Không có sản phẩm nào</td></tr>";
+                            }
+                        ?>
                     </tbody>
                     </table>
                 </div>

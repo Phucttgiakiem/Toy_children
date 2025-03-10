@@ -111,7 +111,9 @@ $(document).ready(function () {
         formData.append("loaisp",loaisp);
         formData.append("soluongton",soluongton);
         formData.append("soluongban",soluongban);
-        formData.append('file', file);
+        if (file) {
+            formData.append('file', file);
+        }
         $.ajax({
             url: "/Toy_children/admin/Product/update",
             type: "POST",
@@ -125,8 +127,11 @@ $(document).ready(function () {
                         window.location.assign
                         ("http://" + window.location.hostname + "/Toy_children/admin/Product");
                     },1100);
-                }
-                
+                }  
+            },
+            error: function (xhr, status, error) {
+                console.log("Lỗi: " + error);
+                console.log("phản hồi lỗi từ máy chủ:", xhr.responseText);
             }
         })
     })
@@ -192,6 +197,103 @@ $(document).ready(function () {
                     }
                 }
             )
+        }
+    })
+    // xử lý với hãng sản xuất
+    //create
+    $("#createcompanyfirm").click(function(e){
+        let companyfirm = $("#tenhangsanxuat").val();
+        let notice = $("#tenhsx-notice");
+        let file = $("#inputGroupFile02")[0].files[0];
+        let isvalid = true;
+
+        if(companyfirm == ""){
+            $("#tenhangsanxuat").addClass("border-danger");
+            $(notice).addClass("text-danger");
+            isvalid = false;
+        }
+        else {
+            $("#tenhangsanxuat").removeClass("border-danger");
+            $(notice).removeClass("text-danger");
+            isvalid = true;
+        }
+        formData = new FormData();
+        formData.append("namecompanyfirm",companyfirm);
+        if (file) {
+            formData.append('file', file);
+        }
+        if(isvalid){
+            $.ajax({
+                url: "/Toy_children/admin/Hangsanxuat/createitem",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    showModal(res.status, res.message);
+                    if(res.status == "success"){
+                        setTimeout(function(){
+                            window.location.assign
+                            ("http://" + window.location.hostname + "/Toy_children/admin/Hangsanxuat");
+                        },1100);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Lỗi: " + error);
+                    console.log("phản hồi lỗi từ máy chủ:", xhr.responseText);
+                }
+            })
+        }
+    })
+    //edit
+    $("#inputGroupFile03").change(function(e){
+        let file = e.target.files[0];
+        let idimg = $("#logofirm");
+        idimg.attr("src",URL.createObjectURL(file));
+    })
+    $("#updateCompanyfirm").click(function(e){
+        let id = $(this).data("id");
+        let companyfirm = $("#tenhangsanxuat").val();
+        let notice = $("#tenhang-notice");
+        let file = $("#inputGroupFile03")[0].files[0];
+        let isvalid = true;
+        if(companyfirm == ""){
+            $("#tenhangsanxuat").addClass("border-danger");
+            $(notice).addClass("text-danger");
+            isvalid = false;
+        }
+        else {
+            $("#tenhangsanxuat").removeClass("border-danger");
+            $(notice).removeClass("text-danger");
+            isvalid = true;
+        }
+        formData = new FormData();
+        formData.append("id",id);
+        formData.append("namehangsx",companyfirm);
+        if (file) {
+            formData.append('file', file);
+        }
+        if(isvalid){
+            $.ajax({
+                url: "/Toy_children/admin/Hangsanxuat/update",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    showModal(res.status, res.message);
+                    if(res.status == "success"){
+                        setTimeout(function(){
+                            window.location.assign
+                            ("http://" + window.location.hostname + "/Toy_children/admin/Hangsanxuat");
+                        },1100);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Lỗi: " + error);
+                    console.log("phản hồi lỗi từ máy chủ:", xhr.responseText);
+                }
+            })
         }
     })
 })

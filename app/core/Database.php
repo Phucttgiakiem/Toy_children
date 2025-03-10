@@ -46,6 +46,38 @@
             $stmt->close();
             return $stmt;
         }
+        public function delete ($sql,$params = []){
+            $stmt = $this->conn->prepare($sql);
+            if ($stmt == false) {
+                die("lỗi prepare: " . $this->conn->error);
+            }
+            
+            // Gán tham số (phải truyền kiểu dữ liệu trước, ví dụ "s" cho string, "i" cho int)
+            if (!empty($params)) {
+                $types = '';
+                foreach ($params as $param) {
+                    if (is_int($param)) {
+                        $types .= 'i';  // 'i' cho integer
+                    } elseif (is_double($param)) {
+                        $types .= 'd';  // 'd' cho double
+                    } else {
+                        $types .= 's';  // 's' cho string
+                    }
+                }
+                $stmt->bind_param($types, ...$params);
+            }
+    
+            if ($stmt->execute() === false) {
+                die("lỗi execute: " . $this->conn->error);
+            }
+            if ($this->conn->affected_rows > 0) {
+                // Xóa thành công
+                return true;
+            } else {
+                // Không có dòng nào bị xóa (xóa không thành công)
+                return false;
+            }
+        }
         // Hàm lấy dữ liệu dạng mảng kết hợp
         public function fetchAll($sql,$params = []){
             $stmt = $this->conn->prepare($sql);

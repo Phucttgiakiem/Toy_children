@@ -9,5 +9,16 @@
             }
             return $stmt; 
         }
+        public function getOneHangSX($id){
+            $sql = "SELECT * FROM HangSanXuat WHERE MaHangSanXuat = $id";
+            $stmt = $this->fetchOne($sql);
+            return $stmt ? $stmt : null;
+        }
+        public function createHangSX($sql,$params){
+            return $this->execute($sql,$params);
+        }
+        public function updateHangSX($sql,$params){
+            return $this->execute($sql,$params);
+        }
     }
 ?>
