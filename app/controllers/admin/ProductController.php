@@ -20,6 +20,15 @@
             $this->render("/views/admin/dashboard",['products'=>$products,'content_page' => $content_page,
             'totalpages'=>$totalpages,'page'=>$page]);
         }
+        public function lockitem($page = 1){
+            $totalrowtable = $this->productModel->getCountProductlock();
+            $totalpages = ceil((int)$totalrowtable/5);
+            $offset = ((int)$page - 1) * 5;
+            $products = $this->productModel->getAllProductLock($offset,5);
+            $content_page = "../app/views/admin/product/lockproduct.php";
+            $this->render("/views/admin/dashboard",['products'=>$products,'content_page' => $content_page,
+            'totalpages'=>$totalpages,'page'=>$page]);
+        }
         public function detail($id) {
             $product = $this->productModel->getOneProduct($id);
             $content_page = "../app/views/admin/product/detail.php";
@@ -43,12 +52,12 @@
                 $soluongban = (int)$_POST['soluongban'];
                 $giaban =(int)$_POST['giaban'];
                 $loaisp =(int)$_POST['loaisp'];
-                $file = $_FILES['file'];
+                $file = isset($_FILES['file']) ? $_FILES['file'] : null;
                 $newFileName = "";
              // Định dạng JSON để AJAX nhận đúng kiểu dữ liệu
                 header('Content-Type: application/json');
                 // Kiểm tra file có được tải lên không
-                if (isset($_FILES['file'])) {
+                if ($file) {
                     // Kiểm tra lỗi upload
                     if ($file['error'] !== UPLOAD_ERR_OK) {
                         throw new Exception(" Lỗi upload file: " . getUploadError($file['error']));
@@ -75,7 +84,7 @@
                 $sql = "";
                 $params = null;
                 if($newFileName == ""){
-                    $sql = "UPDATE SanPham SET TenSanPham = ?, MoTa = ?, SoLuongTon = ?, SoLuongBan = ?, GiaSanPham = ?, HinhURL = HinhURL, MaHangSanXuat = ?, MaLoaiSanPham = ? WHERE MaSanPham = ?";
+                    $sql = "UPDATE SanPham SET TenSanPham = ?, MoTa = ?, SoLuongTon = ?, SoLuongBan = ?, GiaSanPham = ?, MaHangSanXuat = ?, MaLoaiSanPham = ? WHERE MaSanPham = ?";
                     $params = [$name, $motasp, $soluongton, $soluongban, $giaban, $hangsx, $loaisp, $id];
                 }else{
                     $sql = "UPDATE SanPham SET TenSanPham = ?, MoTa = ?, SoLuongTon = ?, SoLuongBan = ?, GiaSanPham = ?, HinhURL = ?, MaHangSanXuat = ?, MaLoaiSanPham = ? WHERE MaSanPham = ?";
@@ -94,6 +103,21 @@
 
                 echo json_encode(["status" => "error", "message" => $e->getMessage()]);
             }
-         }
+        }
+        // public function delete ($id){
+        //     $idsp = (int)$id;
+        //     //Kiểm tra có sản phẩm có đang nằm trong hóa đơn hay không?
+        //     $sql = "SELECT COUNT(*) FROM ChiTietDonDatHang WHERE MaSanPham = ?";
+        //     $stmt = $this->productModel->findproductindetailbill($sql,$idsp);
+            
+        //     if($stmt[0] == 0){
+        //         //thực hiện xử lý xóa sản phẩm khỏi database
+        //         $sql = "DELETE FROM SanPham WHERE MaSanPham = $idsp";
+        //     }else {
+        //         //thực hiện khóa sản phẩm vì có tồn tại trong hóa đơn nào đó
+        //         $sql = "UPDATE SanPham SET BiXoa = 1 - BiXoa WHERE MaSanPham = $idsp";
+        //     }
+        //     $stmt = $this->productModel
+        // }
     }
 ?>
