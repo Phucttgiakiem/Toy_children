@@ -6,15 +6,13 @@
 ?>
 <div class="container">
         <div class="page-inner">
-        <div class="page-header">
-            <h3 class="fw-bold mb-3">DataTables.Net</h3>
-        </div>
+        
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center px-4 py-2">
                     <h4 class="card-title">Danh sách sản phẩm</h4>
-                    <div class="flex-grow-1">
+                    <!-- <div class="flex-grow-1">
                         <a
                             href="/Toy_children/admin/Product/lockitem"
                             class="btn"
@@ -22,7 +20,7 @@
                             <i class="fa-solid fa-house-lock fs-3 text-success"></i>
                         </a>
                         
-                    </div>
+                    </div> -->
                     <div>
                         <a
                         href="/Toy_children/admin/Product/create"
@@ -147,7 +145,13 @@
                             <td><img src='/Toy_children/public/assets/img/<?php echo $item['HinhURL']; ?>' width='50px' height='50px'></td>
                             <td><?=$item['NgayNhap']?></td>
                             <td>
-                                <i class="fa-solid fa-lock-open"></i>
+                                <?php 
+                                    if($item['BiXoa'] == 1){
+                                        echo '<i class="fa-solid fa-lock text-warning"></i>';
+                                    }else {
+                                        echo '<i class="fa-solid fa-lock-open"></i>';
+                                    }
+                                ?>
                             </td>
                             <td>
                                 <div class="form-button-action">

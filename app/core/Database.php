@@ -46,6 +46,46 @@
             $stmt->close();
             return $stmt;
         }
+        public function Countitem ($sql,$params = []){
+            // Chuẩn bị câu lệnh SQL
+                $stmt = $this->conn->prepare($sql);
+                if ($stmt === false) {
+                    die("Lỗi prepare: " . $this->conn->error);
+                }
+
+                // Liên kết các tham số với câu truy vấn (nếu có)
+                if (!empty($params)) {
+                    // Tạo một chuỗi các loại dữ liệu cho các tham số
+                    $types = '';
+                    foreach ($params as $param) {
+                        if (is_int($param)) {
+                            $types .= 'i';  // 'i' cho integer
+                        } elseif (is_double($param)) {
+                            $types .= 'd';  // 'd' cho double
+                        } else {
+                            $types .= 's';  // 's' cho string
+                        }
+                    }
+
+                    // Liên kết các tham số vào câu truy vấn
+                    $stmt->bind_param($types, ...$params);
+                }
+
+                // Thực thi câu lệnh SQL
+                $stmt->execute();
+
+                // Liên kết kết quả với biến
+                $stmt->bind_result($count);
+
+                // Lấy dữ liệu
+                $stmt->fetch();
+
+                // Đóng câu lệnh
+                $stmt->close();
+
+                // Trả về kết quả COUNT
+                return $count;
+        }
         public function delete ($sql,$params = []){
             $stmt = $this->conn->prepare($sql);
             if ($stmt == false) {

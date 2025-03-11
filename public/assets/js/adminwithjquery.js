@@ -47,10 +47,14 @@ $(document).ready(function () {
                     showModal('error',"lỗi cập nhật trạng thái đơn hàng, thử lại !!!");
                 } else if(res.status_rs == 2){
                     showModal('success',"Cập nhật trạng thái đơn hàng thành công !!!");
+                    setTimeout(function(){
+                        window.location.assign
+                        ("http://" + window.location.hostname + "/Toy_children/admin/Bill");
+                    },1200);
                 }else if (res.status_rs == 3){
                     showModal('error',"lỗi kiểm tra sản phẩm, thử lại !!!");
                 }else if (res.status_rs == 4){
-                    showModal('error',"Có sản phẩm trong hóa đơn không đủ số lượng để cấp, thử lại !!!");
+                    showModal('error',"Có sản phẩm trong hóa đơn không đủ số lượng để bán, thử lại !!!");
                 }else{
                     showModal('error',"lỗi cập nhật số sản phẩm, thử lại !!!");
                 }
@@ -296,5 +300,63 @@ $(document).ready(function () {
             })
         }
     })
+    //tạo mới sản phẩm
+    //thay đổi ảnh sản phẩm
+    $("#inputGroupFile02").change(function(event){
+        // Lấy file từ input
+        const file = event.target.files[0];
+
+        // Kiểm tra xem người dùng đã chọn file chưa
+        if (file) {
+            // Tạo URL từ tệp được chọn
+            const reader = new FileReader();
+
+            // Khi file được đọc thành công
+            reader.onload = function(e) {
+                // Cập nhật thuộc tính src của thẻ img
+                document.getElementById('imgPreview').src = e.target.result;
+            };
+
+            // Đọc file dưới dạng URL data
+            reader.readAsDataURL(file);
+        }
+    })
+    $("#btn-create-pd").click(function(event){
+        event.preventDefault();  // Ngừng gửi form ngay lập tức, cả khi form hợp lệ hay không
+        let form = $("#create_product");
+        // Kiểm tra tính hợp lệ của form
+        if (!$(form)[0].checkValidity()) {  
+        
+            // Thêm lớp 'was-validated' để hiển thị thông báo lỗi
+            $(form).addClass('was-validated');
+            return;  // Không tiếp tục gửi AJAX nếu form không hợp lệ
+        }
+    
+        // Nếu form hợp lệ, tiếp tục gửi AJAX
+        var formData = new FormData($(form)[0]);  // Lấy dữ liệu từ form (thêm [0] để lấy DOM element)
+        // Gửi dữ liệu qua Ajax
+        $.ajax({
+            url: '/Toy_children/admin/Product/createproduct', // URL của controller
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(res) {
+                // Xử lý kết quả trả về từ controller
+                showModal(res.status, res.message);
+                if (res.status === 'success') {
+                    $("#close-notice").click(function(){
+                        $('#myModal').modal("hide");
+                        window.location.assign("http://" + window.location.hostname + "/Toy_children/admin/product");
+                    });
+                    // Nếu cần, có thể chuyển hướng hoặc reset form
+                    $("#create_product")[0].reset(); // Đặt lại form
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log('Có lỗi xảy ra khi gửi form. Vui lòng thử lại!');
+            }
+        });
+    });
 })
     

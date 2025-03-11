@@ -4,165 +4,143 @@
 ?>
 <div class="container">
         <div class="page-inner">
-        <div class="page-header">
-            <h3 class="fw-bold mb-3">DataTables.Net</h3>
-            <ul class="breadcrumbs mb-3">
-            <li class="nav-home">
-                <a href="#">
-                <i class="icon-home"></i>
-                </a>
-            </li>
-            <li class="separator">
-                <i class="icon-arrow-right"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">Tables</a>
-            </li>
-            <li class="separator">
-                <i class="icon-arrow-right"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">Datatables</a>
-            </li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                <div class="d-flex align-items-center">
-                    <h4 class="card-title">Danh sách đơn đặt hàng</h4>
-                </div>
-                </div>
-                <div class="card-body">
-                <!-- Modal -->
-                <div
-                    class="modal fade"
-                    id="addRowModal"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-hidden="true"
-                >
-                    <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header border-0">
-                        <h5 class="modal-title">
-                            <span class="fw-mediumbold"> New</span>
-                            <span class="fw-light"> Row </span>
-                        </h5>
-                        <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                        >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                        <p class="small">
-                            Create a new row using this form, make sure you
-                            fill them all
-                        </p>
-                        <form>
-                            <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group form-group-default">
-                                <label>Name</label>
-                                <input
-                                    id="addName"
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="fill name"
-                                />
-                                </div>
-                            </div>
-                            <div class="col-md-6 pe-0">
-                                <div class="form-group form-group-default">
-                                <label>Position</label>
-                                <input
-                                    id="addPosition"
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="fill position"
-                                />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-group-default">
-                                <label>Office</label>
-                                <input
-                                    id="addOffice"
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="fill office"
-                                />
-                                </div>
-                            </div>
-                            </div>
-                        </form>
-                        </div>
-                        <div class="modal-footer border-0">
-                        <button
-                            type="button"
-                            id="addRowButton"
-                            class="btn btn-primary"
-                        >
-                            Add
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-danger"
-                            data-dismiss="modal"
-                        >
-                            Close
-                        </button>
-                        </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Danh sách đơn đặt hàng</h4>
                     </div>
                     </div>
-                </div>
+                    <div class="card-body">
+                    <!-- Modal -->
+                        <div
+                            class="modal fade"
+                            id="addRowModal"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-hidden="true"
+                        >
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header border-0">
+                                    <h5 class="modal-title">
+                                        <span class="fw-mediumbold"> New</span>
+                                        <span class="fw-light"> Row </span>
+                                    </h5>
+                                    <button
+                                        type="button"
+                                        class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close"
+                                    >
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p class="small">
+                                        Create a new row using this form, make sure you
+                                        fill them all
+                                    </p>
+                                    <form>
+                                        <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                            <label>Name</label>
+                                            <input
+                                                id="addName"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="fill name"
+                                            />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pe-0">
+                                            <div class="form-group form-group-default">
+                                            <label>Position</label>
+                                            <input
+                                                id="addPosition"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="fill position"
+                                            />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-default">
+                                            <label>Office</label>
+                                            <input
+                                                id="addOffice"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="fill office"
+                                            />
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </form>
+                                    </div>
+                                    <div class="modal-footer border-0">
+                                    <button
+                                        type="button"
+                                        id="addRowButton"
+                                        class="btn btn-primary"
+                                    >
+                                        Add
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-dismiss="modal"
+                                    >
+                                        Close
+                                    </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
 
-                <div class="table-responsive">
-                    <table
-                    id="add-row"
-                    class="display table table-striped table-hover"
-                    >
-                    <thead>
-                        <tr>
-                        <th>STT</th>
-                        <th>Tổng tiền đơn hàng</th>
-                        <th>Ngày tạo</th>
-                        <th style="width: 10%">Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php if(count($bills) > 0){
-                        $stt = 1;
-                        foreach($bills as $item):
-                    ?>
-                        <tr>
-                            <td><?=$stt ?></td>
-                            <td><?=$item['TongThanhTien']?> đ</td>
-                            <td><?=$item['NgayLap']?></td>
-                            <td>
-                                <div class="form-button-action">
-                                <a
-                                    href="/Toy_children/admin/bill/detail/<?=$item['MaDonDatHang'] ?>"
-                                    class="btn btn-link btn-warning btn-lg"
-                                    data-id="<?=$item['MaDonDatHang'] ?>"
+                            <div class="table-responsive">
+                                <table
+                                id="add-row"
+                                class="display table table-striped table-hover"
                                 >
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php $stt++; endforeach; } ?>
-                    </tbody>
-                    </table>
-                </div>
+                                <thead>
+                                    <tr>
+                                    <th>STT</th>
+                                    <th>Tổng tiền đơn hàng</th>
+                                    <th>Ngày tạo</th>
+                                    <th style="width: 10%">Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php if(count($bills) > 0){
+                                    $stt = 1;
+                                    foreach($bills as $item):
+                                ?>
+                                    <tr>
+                                        <td><?=$stt ?></td>
+                                        <td><?=$item['TongThanhTien']?> đ</td>
+                                        <td><?=$item['NgayLap']?></td>
+                                        <td>
+                                            <div class="form-button-action">
+                                            <a
+                                                href="/Toy_children/admin/bill/detail/<?=$item['MaDonDatHang'] ?>"
+                                                class="btn btn-link btn-warning btn-lg"
+                                                data-id="<?=$item['MaDonDatHang'] ?>"
+                                            >
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php $stt++; endforeach; } ?>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
         </div>
     </div>
 </div>

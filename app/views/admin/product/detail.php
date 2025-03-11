@@ -67,9 +67,7 @@
                     </div>
                     <div class="form-group">
                         <label for="disableinput">Mô tả sản phẩm</label>
-                        <textarea class="form-control" rows="3" disabled>
-                        <?=$product['MoTa']?>
-                        </textarea>
+                        <textarea class="form-control" rows="3" disabled><?=$product['MoTa']?></textarea>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">

@@ -4,9 +4,6 @@
 ?>
 <div class="container">
         <div class="page-inner">
-        <div class="page-header">
-            <h3 class="fw-bold mb-3">DataTables.Net</h3>
-        </div>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -120,6 +117,7 @@
                         <th>STT</th>
                         <th>Tên hãng sản xuất</th>
                         <th>Hình ảnh</th>
+                        <th>Tình trạng</th>
                         <th style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
@@ -133,9 +131,18 @@
                             <td><?=$item['TenHangSanXuat']?></td>
                             <td><img src='/Toy_children/public/assets/img/<?php echo $item['LogoURL']; ?>' width='50px' height='50px'></td>
                             <td>
+                                <?php 
+                                    if($item['BiXoa'] == 1){
+                                        echo '<i class="fa-solid fa-lock text-warning"></i>';
+                                    }else {
+                                        echo '<i class="fa-solid fa-lock-open"></i>';
+                                    }
+                                ?>
+                            </td>
+                            <td>
                                 <div class="form-button-action">
                                 <a
-                                    href="/Toy_children/admin/Product/detail/<?=$item['MaHangSanXuat'] ?>"
+                                    href="/Toy_children/admin/Hangsanxuat/delete/<?=$item['MaHangSanXuat'] ?>"
                                     class="btn btn-link btn-danger btn-lg"
                                     id="Detail"
                                 >

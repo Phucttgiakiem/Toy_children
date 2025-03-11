@@ -44,5 +44,22 @@
                 echo json_encode(['status'=>'error','message'=>'Thêm loại sản phẩm thất bại']);
             }
         }
+        public function delete ($id){
+            $idlsp = (int)$id;
+            //Kiểm tra có sản phẩm có đang nằm trong hóa đơn hay không?
+            $sql = "SELECT COUNT(*) FROM SanPham WHERE MaLoaiSanPham =  ?";
+            $stmt = $this->loaispModel->findproductmatchwithtype($sql,$idlsp);
+            
+            if($stmt == 0){
+                //thực hiện xử lý xóa thể loại sản phẩm khỏi database
+                $sql = "DELETE FROM LoaiSanPham WHERE MaLoaiSanPham = ?";
+            }else {
+                //thực hiện khóa sản phẩm vì có tồn tại trong hóa đơn nào đó
+                $sql = "UPDATE LoaiSanPham SET BiXoa = 1 - BiXoa WHERE MaLoaiSanPham = ?";
+            }
+            $params = [$idlsp];
+            $stmt = $this->loaispModel->deletetypeproduct($sql,$params);
+            $this->index();
+        }
     }
 ?>
