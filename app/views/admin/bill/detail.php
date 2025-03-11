@@ -85,6 +85,7 @@
                         <select
                         class="form-control"
                         id="exampleFormControlSelect1"
+                        <?php if($infobill['MaTinhTrang'] == 4) echo "disabled readonly"?>
                         >
                         <?php 
                             foreach ($tinhtrang as $key => $value) {
@@ -102,7 +103,7 @@
             </div>
                 <div class="card-action">
                     <button class="btn btn-success" id="update-status-bill" data-id="<?=$infobill['MaDonDatHang']?>">Cập nhật trạng thái</button>
-                    <button class="btn btn-danger">Quay lại</button>
+                    <a href="/Toy_children/admin/Bill" class="btn btn-danger">Quay lại</a>
                 </div>
             </div>
         </div>

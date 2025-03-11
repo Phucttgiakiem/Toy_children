@@ -4,9 +4,6 @@
 ?>
 <div class="container">
         <div class="page-inner">
-        <div class="page-header">
-            <h3 class="fw-bold mb-3">DataTables.Net</h3>
-        </div>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -50,7 +47,15 @@
                             <td><?=$item['TenDangNhap']?></td>
                             <td><?=$item['DienThoai']?></td>
                             <td><?=$item['DiaChi']?></td>
-                            <td></td>
+                            <td>
+                            <?php 
+                                if($item['BiXoa'] == 1){
+                                    echo '<i class="fa-solid fa-lock text-warning"></i>';
+                                }else {
+                                    echo '<i class="fa-solid fa-lock-open"></i>';
+                                }
+                                ?>
+                            </td>
                             <td>
                                 <div class="form-button-action">
                                 <a
@@ -61,12 +66,15 @@
                                     <i class="fa-solid fa-circle-info"></i>
                                     
                                 </a>
-                                <a
-                                    href="/Toy_children/admin/Hangsanxuat/edit/<?=$item['MaTaiKhoan'] ?>"
-                                    class="btn btn-link btn-warning btn-lg"
-                                >
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+                                <?php
+                                    if($item['TenDangNhap'] !== "admin"){
+                                    $maTaiKhoan = $item['MaTaiKhoan'];  // Lấy giá trị MaTaiKhoan ra ngoài
+                                        echo "<a href='/Toy_children/admin/account/update/$maTaiKhoan'
+                                                class='btn btn-link btn-warning btn-lg'>
+                                                <i class='fa-solid fa-lock text-danger'></i>
+                                            </a>";
+                                    }
+                                ?>
                                 </div>
                             </td>
                         </tr>

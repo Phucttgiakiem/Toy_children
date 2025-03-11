@@ -15,5 +15,10 @@
             $content_page = "../app/views/admin/account/detail.php";
             $this->render("/views/admin/dashboard", ["account" => $data, "content_page" => $content_page]);
         }
+        public function update($id){
+            $sql = "UPDATE TaiKhoan SET BiXoa = 1 - BiXoa WHERE MaTaiKhoan = ?";
+            $this->accountModel->updatestatusaccount($sql,$id);
+            $this->index();
+        }
     }
 ?>

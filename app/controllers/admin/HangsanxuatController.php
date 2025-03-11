@@ -60,6 +60,7 @@
             $namehangsx = $_POST['namecompanyfirm'];
             $file = isset($_FILES['file']) ? $_FILES['file'] : null;
             $newFileName = "";
+            header('Content-Type: application/json');
             if ($file) {
                 $targetDir = "C:/xampp/htdocs/Toy_children/public/assets/img";
                 if (!file_exists($targetDir)) {
@@ -80,13 +81,29 @@
             $sql = "INSERT INTO HangSanXuat(TenHangSanXuat,LogoURL) VALUES (?,?)";
             $params = [$namehangsx,$newFileName];
             $stmt = $this->hangsxModel->createHangSX($sql,$params);
-            header('Content-Type: application/json');
+            
             if($stmt){
                 echo json_encode(['status'=>'success','message'=>'Tạo mới hãng sản xuất thành công']);
             }else{
                 echo json_encode(['status'=>'error','message'=>'Tạo hãng sản xuất thất bại']);
             }
         }
-
+        public function delete ($id){
+            $idh = (int)$id;
+            //Kiểm tra có sản phẩm có đang nằm trong hãng hay không?
+            $sql = "SELECT COUNT(*) FROM SanPham WHERE MaHangSanXuat =  ?";
+            $stmt = $this->hangsxModel->findproductmatchwithfirm($sql,$idh);
+            
+            if($stmt == 0){
+                //thực hiện xử lý xóa thể loại sản phẩm khỏi database
+                $sql = "DELETE FROM HangSanXuat WHERE MaHangSanXuat = ?";
+            }else {
+                //thực hiện khóa sản phẩm vì có tồn tại trong hóa đơn nào đó
+                $sql = "UPDATE HangSanXuat SET BiXoa = 1 - BiXoa WHERE MaHangSanXuat = ?";
+            }
+            $params = [$idh];
+            $stmt = $this->hangsxModel->deletecompany($sql,$params);
+            $this->index();
+        }
     }
 ?>

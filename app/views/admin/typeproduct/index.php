@@ -118,6 +118,7 @@
                         <tr>
                         <th>STT</th>
                         <th>Tên loại sản phẩm</th>
+                        <th>Tình trang</th>
                         <th style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
@@ -129,6 +130,15 @@
                         <tr>
                             <td><?=$stt ?></td>
                             <td><?=$item['TenLoaiSanPham']?></td>
+                            <td>
+                                <?php 
+                                    if($item['BiXoa'] == 0){
+                                        echo '<i class="fa-solid fa-lock-open"></i>';
+                                    }else {
+                                        echo '<i class="fa-solid fa-lock text-warning"></i>';
+                                    }
+                                ?>
+                            </td>
                             <td>
                                 <div class="form-button-action">
                                 <a
