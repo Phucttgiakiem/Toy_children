@@ -104,12 +104,13 @@
                                 id="add-row"
                                 class="display table table-striped table-hover"
                                 >
+                                
                                 <thead>
                                     <tr>
-                                    <th>STT</th>
-                                    <th>Tổng tiền đơn hàng</th>
-                                    <th>Ngày tạo</th>
-                                    <th style="width: 10%">Thao tác</th>
+                                    <th class="text-center">STT</th>
+                                    <th class="text-center">Tổng tiền đơn hàng</th>
+                                    <th class="text-center">Ngày tạo</th>
+                                    <th class="text-center" style="width: 20%">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,10 +119,10 @@
                                     foreach($bills as $item):
                                 ?>
                                     <tr>
-                                        <td><?=$stt ?></td>
-                                        <td><?=$item['TongThanhTien']?> đ</td>
-                                        <td><?=$item['NgayLap']?></td>
-                                        <td>
+                                        <td class="text-center"><?=$stt ?></td>
+                                        <td class="text-center"><?=$item['TongThanhTien']?> đ</td>
+                                        <td class="text-center"><?=$item['NgayLap']?></td>
+                                        <td class="text-center">
                                             <div class="form-button-action">
                                             <a
                                                 href="/Toy_children/admin/bill/detail/<?=$item['MaDonDatHang'] ?>"

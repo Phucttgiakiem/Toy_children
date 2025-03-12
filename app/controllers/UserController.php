@@ -1,9 +1,12 @@
 <?php 
     require_once "../app/models/UserModel.php";
+    require_once "../app/models/ProductModel.php";
     class UserController extends Controller {
         private $userModel;
+        private $productModel;
         public function __construct(){
             $this->userModel = new UserModel();
+            $this->productModel = new ProductModel();
         }
         public function Index (){
             session_start();

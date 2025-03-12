@@ -29,12 +29,12 @@
                     >
                     <thead>
                         <tr>
-                        <th>STT</th>
-                        <th>Tên tài khoản</th>
-                        <th>Điện thoại</th>
-                        <th>Địa chỉ</th>
-                        <th>Trạng thái</th>
-                        <th style="width: 10%">Thao tác</th>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Tên tài khoản</th>
+                        <th class="text-center">Điện thoại</th>
+                        <th class="text-center">Địa chỉ</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-center" style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,11 +43,11 @@
                         foreach($accounts as $item):
                     ?>
                         <tr>
-                            <td><?=$stt ?></td>
-                            <td><?=$item['TenDangNhap']?></td>
-                            <td><?=$item['DienThoai']?></td>
-                            <td><?=$item['DiaChi']?></td>
-                            <td>
+                            <td class="text-center"><?=$stt ?></td>
+                            <td class="text-center"><?=$item['TenDangNhap']?></td>
+                            <td class="text-center"><?=$item['DienThoai']?></td>
+                            <td class="text-center"><?=$item['DiaChi']?></td>
+                            <td class="text-center">
                             <?php 
                                 if($item['BiXoa'] == 1){
                                     echo '<i class="fa-solid fa-lock text-warning"></i>';

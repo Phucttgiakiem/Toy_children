@@ -114,11 +114,11 @@
                     >
                     <thead>
                         <tr>
-                        <th>STT</th>
-                        <th>Tên hãng sản xuất</th>
-                        <th>Hình ảnh</th>
-                        <th>Tình trạng</th>
-                        <th style="width: 10%">Thao tác</th>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Tên hãng sản xuất</th>
+                        <th class="text-center">Hình ảnh</th>
+                        <th class="text-center">Tình trạng</th>
+                        <th class="text-center"  style="width: 20%">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -127,10 +127,10 @@
                         foreach($hangsxs as $item):
                     ?>
                         <tr>
-                            <td><?=$stt ?></td>
-                            <td><?=$item['TenHangSanXuat']?></td>
-                            <td><img src='/Toy_children/public/assets/img/<?php echo $item['LogoURL']; ?>' width='50px' height='50px'></td>
-                            <td>
+                            <td class="text-center"><?=$stt ?></td>
+                            <td class="text-center"><?=$item['TenHangSanXuat']?></td>
+                            <td class="text-center"><img src='/Toy_children/public/assets/img/<?php echo $item['LogoURL']; ?>' width='50px' height='50px'></td>
+                            <td class="text-center">
                                 <?php 
                                     if($item['BiXoa'] == 1){
                                         echo '<i class="fa-solid fa-lock text-warning"></i>';
@@ -139,7 +139,7 @@
                                     }
                                 ?>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <div class="form-button-action">
                                 <a
                                     href="/Toy_children/admin/Hangsanxuat/delete/<?=$item['MaHangSanXuat'] ?>"

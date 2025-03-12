@@ -116,10 +116,10 @@
                     >
                     <thead>
                         <tr>
-                        <th>STT</th>
-                        <th>Tên loại sản phẩm</th>
-                        <th>Tình trang</th>
-                        <th style="width: 10%">Thao tác</th>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Tên loại sản phẩm</th>
+                        <th class="text-center">Tình trang</th>
+                        <th class="text-center" style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -128,9 +128,9 @@
                         foreach($loaisps as $item):
                     ?>
                         <tr>
-                            <td><?=$stt ?></td>
-                            <td><?=$item['TenLoaiSanPham']?></td>
-                            <td>
+                            <td class="text-center"><?=$stt ?></td>
+                            <td class="text-center"><?=$item['TenLoaiSanPham']?></td>
+                            <td class="text-center">
                                 <?php 
                                     if($item['BiXoa'] == 0){
                                         echo '<i class="fa-solid fa-lock-open"></i>';
@@ -139,7 +139,7 @@
                                     }
                                 ?>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <div class="form-button-action">
                                 <a
                                     href="/Toy_children/admin/Typeproduct/edit/<?=$item['MaLoaiSanPham'] ?>"
