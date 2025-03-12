@@ -126,12 +126,12 @@
                     >
                     <thead>
                         <tr>
-                        <th>STT</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Hình ảnh</th>
-                        <th>Ngày nhập</th>
-                        <th>Tình trang</th>
-                        <th>Thao tác</th>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Tên sản phẩm</th>
+                        <th class="text-center">Hình ảnh</th>
+                        <th class="text-center">Ngày nhập</th>
+                        <th class="text-center">Tình trang</th>
+                        <th class="text-center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -140,11 +140,11 @@
                         foreach($products as $item):
                     ?>
                         <tr>
-                            <td><?=$stt ?></td>
-                            <td><?=$item['TenSanPham']?></td>
-                            <td><img src='/Toy_children/public/assets/img/<?php echo $item['HinhURL']; ?>' width='50px' height='50px'></td>
-                            <td><?=$item['NgayNhap']?></td>
-                            <td>
+                            <td class="text-center"><?=$stt ?></td>
+                            <td class="text-center"><?=$item['TenSanPham']?></td>
+                            <td class="text-center"><img src='/Toy_children/public/assets/img/<?php echo $item['HinhURL']; ?>' width='50px' height='50px'></td>
+                            <td class="text-center"><?=$item['NgayNhap']?></td>
+                            <td class="text-center">
                                 <?php 
                                     if($item['BiXoa'] == 1){
                                         echo '<i class="fa-solid fa-lock text-warning"></i>';
@@ -153,7 +153,7 @@
                                     }
                                 ?>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <div class="form-button-action">
                                 <a
                                     href="/Toy_children/admin/Product/detail/<?=$item['MaSanPham'] ?>"

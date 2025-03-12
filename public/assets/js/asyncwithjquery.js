@@ -33,7 +33,7 @@ $(document).ready(function () {
                             <div class="col-md-6 col-lg-4 col-xl-3">
                                 <div class="rounded position-relative fruite-item d-flex flex-column h-100 " >
                                     <div class="fruite-img" >
-                                        <img src="public/assets/img/${arr[i].HinhURL}" class="img-fluid w-100 rounded-top" alt="">
+                                        <img src="/Toy_children/public/assets/img/${arr[i].HinhURL}" class="img-fluid w-100 rounded-top" alt="">
                                     </div>
                                     <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div> -->
                                     <div class="d-flex flex-column justify-content-between p-4 border border-secondary border-top-0 rounded-bottom flex-grow-1">
@@ -75,7 +75,7 @@ $(document).ready(function () {
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="rounded position-relative fruite-item d-flex flex-column h-100 " >
                                 <div class="fruite-img" >
-                                    <img src="public/assets/img/${arr[i].HinhURL}" class="img-fluid w-100 rounded-top" alt="">
+                                    <img src="/Toy_children/public/assets/img/${arr[i].HinhURL}" class="img-fluid w-100 rounded-top" alt="">
                                 </div>
                                 <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div> -->
                                 <div class="d-flex flex-column justify-content-between p-4 border border-secondary border-top-0 rounded-bottom flex-grow-1">
@@ -346,22 +346,4 @@ $(document).ready(function () {
             )
         }
     });
-    //show and hide pass
-    $(document).on('click','#showpass',function(){
-        $(this).css("display","none");
-        $("#exampleInputPassword1").attr({"type":"text"});
-        $("#hidepass").css("display","block");
-    });
-    $(document).on("click","#hidepass",function(){
-        $(this).css("display","none");
-        $("#exampleInputPassword1").attr({"type":"password"});
-        $("#showpass").css("display","block");
-    })
-    $(document).on("click","#logout",function(e){
-        e.preventDefault();
-        $.get("/Toy_children/User/handlelogout",()=>{
-            window.location.assign("http://" + window.location.hostname + "/Toy_children/Home");
-        })
-    });
-    
 });

@@ -109,6 +109,7 @@
     
             if ($stmt->execute() === false) {
                 die("lỗi execute: " . $this->conn->error);
+                exit;
             }
             if ($this->conn->affected_rows > 0) {
                 // Xóa thành công
@@ -157,6 +158,7 @@
             if (!$result) {
                 // In thông báo lỗi hoặc log để kiểm tra nguyên nhân
                 die("Lỗi truy vấn: " . $this->conn->error);  // Nếu sử dụng MySQLi
+                exit;
             }
 
             // Nếu truy vấn thành công, lấy dữ liệu

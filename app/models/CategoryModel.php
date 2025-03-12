@@ -4,7 +4,7 @@
         public function getAllCategory () {
             $sql = "SELECT * FROM LoaiSanPham WHERE Bixoa = 0";
             $stmt = $this->fetchAll($sql);
-            return $stmt->get_result()->fetch_assoc();
+            return $stmt;
         }
     }
 ?>
