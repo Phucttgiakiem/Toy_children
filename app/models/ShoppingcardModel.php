@@ -1,7 +1,6 @@
 <?php 
     // require_once "itemShoppingcard.php";
     class ShoppingcardModel{
-        
         public function additem ($item,$giohang){
             if($giohang && count($giohang) > 0){
                 $position = -1;
@@ -42,5 +41,6 @@
             }
             return $giohang;
         }
+        
     }
 ?>

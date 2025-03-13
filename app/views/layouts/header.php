@@ -20,13 +20,32 @@
         <p></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="close_notification" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
  <!-- inform end -->
-
+<!-- Modal Search Start -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tìm kiếm bởi từ khóa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex align-items-center">
+                <div class="w-75 mx-auto">
+                    <form class="input-group d-flex" method="POST" action="/Toy_children/Product/Categoryproduct">
+                        <input type="search" name="search" class="form-control p-3" placeholder="từ khóa" aria-describedby="search-icon-1">
+                        <button type="submit" id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Search End -->
 <!-- Navbar start -->
 <div class="container-fluid fixed-top">
     <div class="container topbar bg-primary d-none d-lg-block">
@@ -82,7 +101,7 @@
                             <li><a class="dropdown-item" href="#">Cài đặt</a></li>
                             <li><a class="dropdown-item" href="#">Xem danh sách hóa đơn</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a href="#" class="dropdown-item" id="logout">Thoát</a></li>
+                            <li><a href="/Toy_children/User/handlelogout" class="dropdown-item" id="logout">Thoát</a></li>
                         </ul>
                     </div>
                     <?php  } ?>

@@ -33,12 +33,13 @@
                     <div class="col-lg-12">
                         <div class="row g-4 my-5">
                             <div class="col-xl-3">
-                                <div class="input-group w-100 mx-auto d-flex">
-                                    <input type="search" class="form-control p-3" placeholder="Từ khóa" aria-describedby="search-icon-1">
-                                    <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                                <div class=" w-100 mx-auto">
+                                    <form class="input-group d-flex" method="POST" action="/Toy_children/Product/Categoryproduct">
+                                        <input type="search" name="search" class="form-control p-3" placeholder="Từ khóa" aria-describedby="search-icon-1">
+                                        <button type="submit" id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></button>
+                                    </form>
                                 </div>
                             </div>
-                            
                         </div>
                         <div class="row g-4">
                             <div class="col-lg-3">
@@ -47,6 +48,11 @@
                                         <div class="mb-3">
                                             <h4>Loại sản phẩm</h4>
                                             <ul class="list-unstyled fruite-categorie">
+                                                <li>
+                                                    <div class="d-flex justify-content-between fruite-name">
+                                                        <a href="/Toy_children/Product/Categoryproduct"><i class="fas fa-apple-alt me-2"></i>Tất cả</a>
+                                                    </div>
+                                                </li>
                                                 <?php 
                                                     foreach($typeproducts as $item):
                                                 ?>
@@ -79,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-9">
-                                <div class="row g-4 justify-content-center" id="product-list">
+                                <div class="row g-4 justify-content-left" id="product-list">
                                     <?php 
                                             if(count($products)){
                                             foreach($products as $item):
@@ -98,7 +104,7 @@
                                                 <p class="flex-grow-1"><?=$item['MoTa']?></p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                     <p class="text-dark fs-5 fw-bold mb-0"><?=number_format($item['GiaSanPham'],0, '.', ',')?> đ</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag text-primary"></i></a>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary detail-pd" data-id="<?= $item['MaSanPham']?>">Chi tiết</a>
                                                 </div>
                                             </div>
                                         </div>

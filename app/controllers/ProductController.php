@@ -31,8 +31,13 @@
             echo json_encode(array("product"=>$products,"page"=>$page));
         }
         public function Categoryproduct ($companys = null,$typeproduct = null){
-            
-            $products = $this->productModel->getAllProductwithrequire($companys,$typeproduct);
+            // Kiểm tra nếu có giá trị 'search' trong $_POST
+            $search = isset($_POST['search']) ? $_POST['search'] : '';
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();  // Khởi tạo session nếu chưa được khởi tạo
+            }
+
+            $products = $this->productModel->getAllProductwithrequire($companys,$typeproduct,$search);
             $typeproducts = $this->CategoryModel->getAllCategory();
             $companys = $this->CompanyModel->getHangSX();
 

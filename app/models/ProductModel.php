@@ -15,12 +15,15 @@
             }
             return $stmt; 
         }
-        public function getAllProductwithrequire($company=null,$typeproduct=null){
+        public function getAllProductwithrequire($company=null,$typeproduct=null,$search=""){
             // Khởi tạo mảng chứa các điều kiện lọc
             $conditions = ["BiXoa = 0"];
             $params = [];
 
-            
+            if($search !== ""){
+                $conditions[] = "TenSanPham LIKE ?";
+                $params[] = "%$search%";
+            }
 
             // Thêm điều kiện lọc theo công ty nếu có
             if ($company !== null) {
@@ -34,6 +37,7 @@
                 $params[] = $typeproduct;
             } 
 
+            
 
             // Xây dựng câu lệnh SQL với các điều kiện lọc
             $sql = "SELECT * FROM SanPham WHERE " . implode(" AND ", $conditions);
