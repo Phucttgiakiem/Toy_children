@@ -30,10 +30,10 @@
                 <label class="form-label">Mật khẩu</label>
                 <div class="position-relative">
                     <input type="password" class="form-control z-1" id="res-pass" placeholder="Mật khẩu phải bao gồm chữ, số và một ký tự đặc biệt">
-                    <span id="showpass" class="position-absolute z-2 top-50 end-0 mx-3 translate-middle-y">
+                    <span id="r-showpass" class="position-absolute z-2 top-50 end-0 mx-3 translate-middle-y">
                         <i class="fas fa-eye"></i>
                     </span>
-                    <span id="hidepass" class="position-absolute z-3 top-50 end-0 mx-3 translate-middle-y" style="display:none">
+                    <span id="r-hidepass" class="position-absolute z-3 top-50 end-0 mx-3 translate-middle-y" style="display:none">
                         <i class="fas fa-eye-slash"></i>
                     </span>
                 </div>
@@ -43,10 +43,10 @@
                 <label class="form-label">Nhập lại mật khẩu</label>
                 <div class="position-relative">
                     <input type="password" class="form-control z-1" id="res-repass">
-                    <span id="showpass" class="position-absolute z-2 top-50 end-0 mx-3 translate-middle-y">
+                    <span id="r-rshowpass" class="position-absolute z-2 top-50 end-0 mx-3 translate-middle-y">
                         <i class="fas fa-eye"></i>
                     </span>
-                    <span id="hidepass" class="position-absolute z-3 top-50 end-0 mx-3 translate-middle-y" style="display:none">
+                    <span id="r-rhidepass" class="position-absolute z-3 top-50 end-0 mx-3 translate-middle-y" style="display:none">
                         <i class="fas fa-eye-slash"></i>
                     </span>
                 </div>

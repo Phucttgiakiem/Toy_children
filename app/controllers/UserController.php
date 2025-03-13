@@ -9,14 +9,18 @@
             $this->productModel = new ProductModel();
         }
         public function Index (){
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();  // Khởi tạo session nếu chưa được khởi tạo
+            }
             $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
             $totalitem = count($shoppingcard);
             $content_page = "../app/views/user/login.php";
             $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem]);
         }
         public function Register(){
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();  // Khởi tạo session nếu chưa được khởi tạo
+            }
             $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
             $totalitem = count($shoppingcard);
             $content_page = "../app/views/user/register.php";
@@ -48,7 +52,9 @@
             $rs = $this->userModel->handleaccount($username,$password);
             header('Content-Type: application/json');
             if($rs){
-                session_start();
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();  // Khởi tạo session nếu chưa được khởi tạo
+                }
                 $_SESSION["MaTaiKhoan"] = $rs["MaTaiKhoan"];
                 $_SESSION["MaLoaiTaiKhoan"] = $rs["MaLoaiTaiKhoan"];
                 $_SESSION["TenHienThi"] = $rs["TenHienThi"];
@@ -63,7 +69,9 @@
             }
         }
         public function handlelogout (){
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();  // Khởi tạo session nếu chưa được khởi tạo
+            }
             if(isset($_SESSION["MaTaiKhoan"]) && isset($_SESSION["MaLoaiTaiKhoan"]) && isset($_SESSION["TenHienThi"])){
                 unset($_SESSION["MaTaiKhoan"]);
                 unset($_SESSION["MaLoaiTaiKhoan"]);

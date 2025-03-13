@@ -223,6 +223,28 @@ $(document).ready(function () {
             }
         )
     }
+    // ẩn hiện password register
+    $("#r-showpass").click(function(){
+        $("#res-pass").attr("type","text");
+        $("#r-hidepass").css({"display":"block"});
+        $(this).css({"display":"none"});
+    })
+    $("#r-hidepass").click(function(){
+        $("#res-pass").attr("type","password");
+        $("#r-showpass").css({"display":"block"});
+        $(this).css({"display":"none"});
+    })
+    // ẩn hiện repassword register
+    $("#r-rshowpass").click(function(){
+        $("#res-repass").attr("type","text");
+        $("#r-rhidepass").css({"display":"block"});
+        $(this).css({"display":"none"});
+    })
+    $("#r-rhidepass").click(function(){
+        $("#res-repass").attr("type","password");
+        $("#r-rshowpass").css({"display":"block"});
+        $(this).css({"display":"none"});
+    })
     //register
     $(document).on('click','.f-register',function(e){
         e.preventDefault();
@@ -306,6 +328,17 @@ $(document).ready(function () {
         }
         if(isValid) createaccount(username,fullname,email,pass,address,numberphone);
     })
+    // ẩn hiện password login
+    $("#showpass").click(function(){
+        $("#exampleInputPassword1").attr("type","text");
+        $("#hidepass").css({"display":"block"});
+        $(this).css({"display":"none"});
+    })
+    $("#hidepass").click(function(){
+        $("#exampleInputPassword1").attr("type","password");
+        $("#showpass").css({"display":"block"});
+        $(this).css({"display":"none"});
+    })
     //login
     $(document).on('click','.f-login',function(e) {
         e.preventDefault();
@@ -346,4 +379,77 @@ $(document).ready(function () {
             )
         }
     });
+
+    // checkout
+    $("#placeorther").click(function() {
+        let tendautien = $("#tendautien");
+        let tenho = $("#tenho");
+        let diachigiaohang = $("#diachigiaohang");
+        let dienthoai = $("#dienthoai");
+        let email = $("#email");
+        let tongtiendon = $("#total_bill").text();
+        let note = $("#ghichu").val();
+        //error
+        let error_tendautien = $("#error_firstname");
+        let error_lastname = $("#error_lastname");
+        let error_area = $("#error_area");
+        let error_numberphone = $("#error_numberphone");
+        let error_email = $("#error_email");
+        
+        let isValid = true;
+        
+        if(tendautien.val() == ""){
+            error_tendautien.removeClass("d-none");
+            isValid = false;
+        }else {
+            error_tendautien.addClass("d-none");
+        }
+        if(tenho.val() == ""){
+            error_lastname.removeClass("d-none");
+            isValid = false;
+        }else {
+            error_lastname.addClass("d-none");
+        }
+        if(diachigiaohang.val() == ""){
+            error_area.removeClass("d-none");
+            isValid = false;
+        }else {
+            error_area.addClass("d-none");
+        }
+        if(dienthoai.val() == ""){
+            error_numberphone.removeClass("d-none");
+            isValid = false;
+        }else {
+            error_numberphone.addClass("d-none");
+        }
+        if(email.val() == ""){
+            error_email.removeClass("d-none");
+            isValid = false;
+        }else {
+            error_email.addClass("d-none");
+        }
+        if(isValid && tongtiendon !== "0 đ"){
+            $.ajax({
+                url:"/Toy_children/Checkout/createbill",
+                type: "POST",
+                data: {
+                    totalpricebill: tongtiendon,
+                    diachi: diachigiaohang.val(),
+                    note: note
+                },
+                success: function (res) {
+                    $(".show-inform h5").text("Thông báo");
+                    $(".show-inform p").text(res.Notification);
+                    $("#exampleModal").modal("show");
+                    if(res.errCode == 0){
+                        window.location.assign("http://" + window.location.hostname + "/Toy_children/Product/Categoryproduct");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Lỗi: " + error);
+                    console.log("phản hồi lỗi từ máy chủ:", xhr.responseText);
+                }
+            })
+        }
+    })
 });

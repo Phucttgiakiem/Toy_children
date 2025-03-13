@@ -28,15 +28,26 @@
                 // Giả sử bạn biết rõ kiểu dữ liệu của mỗi tham số, ví dụ:
                 $types = '';
                 foreach ($params as $param) {
+                    
+
+                    // Kiểm tra kiểu dữ liệu của tham số và thêm vào chuỗi $types tương ứng
                     if (is_int($param)) {
                         $types .= 'i';  // 'i' cho integer
                     } elseif (is_double($param)) {
                         $types .= 'd';  // 'd' cho double
+                    } elseif (is_string($param)) {
+                        // Kiểm tra nếu đó là chuỗi có định dạng ngày tháng hợp lệ (YYYY-MM-DD hoặc YYYY-MM-DD HH:MM:SS)
+                        if (strtotime($param) !== false) {
+                            $types .= 's';  // 's' cho string (ngày tháng sẽ được xử lý như một chuỗi)
+                        } else {
+                            // Nếu không phải ngày tháng hợp lệ, xử lý như một chuỗi thông thường
+                            $types .= 's';
+                        }
                     } else {
-                        $types .= 's';  // 's' cho string
+                        // Trường hợp các kiểu dữ liệu khác (nếu có)
+                        $types .= 's';  // Mặc định xử lý kiểu khác như string
                     }
-                }
-
+                } 
                 $stmt->bind_param($types, ...$params);
 
             }
