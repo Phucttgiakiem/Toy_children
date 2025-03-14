@@ -26,7 +26,7 @@
     }
 ?>
 <!-- Fruits Shop Start-->
-<div class="container-fluid fruite py-5">
+<div class="container-fluid fruite py-5" style="margin-top:10rem">
             <div class="container py-5">
                 <h1 class="mb-4">Các sản phẩm</h1>
                 <div class="row g-4">
@@ -50,7 +50,7 @@
                                             <ul class="list-unstyled fruite-categorie">
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="/Toy_children/Product/Categoryproduct"><i class="fas fa-apple-alt me-2"></i>Tất cả</a>
+                                                        <a href="/Toy_children/Product/Categoryproduct"><i class="fa-solid fa-box me-2"></i>Tất cả</a>
                                                     </div>
                                                 </li>
                                                 <?php 
@@ -58,7 +58,7 @@
                                                 ?>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="/Toy_children/Product/Categoryproduct/<?=$item["MaLoaiSanPham"]?>"><i class="fas fa-apple-alt me-2"></i><?= $item["TenLoaiSanPham"]?></a>
+                                                        <a href="/Toy_children/Product/Categoryproduct/<?=$item["MaLoaiSanPham"]?>"><i class="fa-solid fa-box me-2"></i></i><?= $item["TenLoaiSanPham"]?></a>
                                                     </div>
                                                 </li>
                                                 <?php endforeach?>
@@ -75,7 +75,7 @@
                                                 ?>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="/Toy_children/Product/Categoryproduct/<?=$item["MaHangSanXuat"]?>"><i class="fas fa-apple-alt me-2"></i><?= $item["TenHangSanXuat"]?></a>
+                                                        <a href="/Toy_children/Product/Categoryproduct/<?=$item["MaHangSanXuat"]?>"><i class="fa-solid fa-building me-2"></i><?= $item["TenHangSanXuat"]?></a>
                                                     </div>
                                                 </li>
                                                 <?php endforeach?>
@@ -109,7 +109,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php endforeach; } ?>
+                                    <?php endforeach; }
+                                        else {
+                                            echo "<h4>Không có sản phẩm tìm thấy</h4>";
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>

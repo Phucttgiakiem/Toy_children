@@ -10,5 +10,11 @@
             $content_page = "../app/views/admin/bill/index.php";
             $this->render("/views/admin/dashboard",['bills'=>$bills,'content_page' => $content_page]);
         }
+        public function PageEmpty(){
+            
+            $content_page = "../app/views/admin/PageEmpty/404.php";
+       
+            $this->render("/views/layouts/main",['content_page' => $content_page]);
+        }
     }
 ?>

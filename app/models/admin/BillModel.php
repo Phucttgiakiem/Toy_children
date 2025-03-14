@@ -2,9 +2,8 @@
     require_once "../app/core/Database.php";
     class BillModel extends Database {
         public function getListbill ($page){
-            $offset = ((int)$page - 1)*8;
-            $sql = "SELECT * FROM DonDatHang ORDER BY NgayLap DESC LIMIT 8 OFFSET ?";
-            $stmt = $this->fetchAll($sql,[$offset]);
+            $sql = "SELECT * FROM DonDatHang ORDER BY NgayLap DESC";
+            $stmt = $this->fetchAll($sql,[]);
             if (!$stmt) {
                 return []; // Trả về mảng rỗng nếu có lỗi
             }
@@ -22,7 +21,7 @@
         }
         public function getInfobill ($id){
             // lấy thông tin đơn hàng
-            $sql = "SELECT i.MaDonDatHang, i.NgayLap, i.TongThanhTien, u.TenHienThi,u.TenDangNhap, u.DiaChi,u.DienThoai,u.Email,
+            $sql = "SELECT i.MaDonDatHang, i.NgayLap, i.TongThanhTien,i.DiaChiGiaoHang, i.GhiChu, u.TenHienThi,u.TenDangNhap, u.DienThoai,u.Email,
             t.TenTinhTrang, t.MaTinhTrang
              FROM DonDatHang i, TaiKhoan u, TinhTrang t WHERE u.BiXoa = 0 AND i.MaTaiKhoan = u.MaTaiKhoan AND
                 i.MaTinhTrang = t.MaTinhTrang AND i.MaDonDatHang = $id";

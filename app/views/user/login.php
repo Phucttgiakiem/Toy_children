@@ -24,7 +24,7 @@
                 <label class="form-check-label" for="exampleCheck1">Ghi nhớ đăng nhập</label>
             </div>
             <div class="mb-2">
-                <span style="cursor:pointer">Quên mặt khâu</span>
+                <a href="/Toy_children/User/Forgotpass" style="cursor:pointer">Quên mặt khâu</a>
             </div>
             <div class="mb-3">
                 <a href="/Toy_children/User/Register" style="cursor:pointer">Đăng ký tài khoản</span>

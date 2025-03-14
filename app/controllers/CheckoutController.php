@@ -27,8 +27,9 @@
                 session_start();  // Khởi tạo session nếu chưa được khởi tạo
             }
             $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
+            $totalitem = count($shoppingcard);
             $content_page = "../app/views/shoppingcard/shoppingcard.php";
-            $this->render("/views/layouts/main",['content_page' => $content_page,'shopping_card'=>$shoppingcard]);
+            $this->render("/views/layouts/main",['content_page' => $content_page,'shopping_card'=>$shoppingcard,'totalitem'=>$totalitem]);
         }
         public function Additem (){
             $this->createitem($_POST['id'], $_POST['img'],$_POST['name'],$_POST['price'],$_POST['quantity'],$_POST['totalprice']);

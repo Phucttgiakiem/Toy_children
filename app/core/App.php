@@ -17,13 +17,15 @@
                         $this->controller = "admin\\" . $url[0] . "Controller";
                         unset($url[0]);
                     } else {
-                        $this->controller = "admin\\DashboardController"; // Mặc định về AdminController
+                        $this->controller = "admin\\PagenotfoundController"; // Mặc định về AdminController
                     }
                 } else {
                     // Kiểm tra controller thường
                     if (file_exists("../app/controllers/" . $url[0] . "Controller.php")) {
                         $this->controller = $url[0] . "Controller";
                         unset($url[0]);
+                    }else{
+                        $this->controller = "PagenotfoundController";
                     }
                 }
             }
@@ -32,11 +34,11 @@
             $namecontroller = strpos($this->controller, "admin\\") === 0 ? str_replace("admin\\", "", $this->controller) : $this->controller;
             $this->controller = new $namecontroller;
 
+           // Kiểm tra method hợp lệ
             if (isset($url[1]) && method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
                 unset($url[1]);
-            }
-
+            } 
             $this->params = $url ? array_values($url) : [];
             call_user_func_array([$this->controller, $this->method], $this->params);
         }
@@ -46,3 +48,4 @@
         }
     }
 ?>
+
