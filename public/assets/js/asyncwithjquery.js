@@ -3,6 +3,14 @@ $(document).ready(function () {
     let btnstep = parentbtn.children().first();
     let btnnext = parentbtn.children().last();
    
+    //thay đổi màu active của item nav-link
+    $('.nav-item').click(function() {
+        // Loại bỏ lớp active khỏi tất cả các mục
+        $('.nav-item').removeClass('active');
+        
+        // Thêm lớp active vào mục được nhấp
+        $(this).addClass('active');
+    });
     const validateEmail = (email) => {
         return String(email)
             .toLowerCase()
@@ -118,6 +126,7 @@ $(document).ready(function () {
         let parent = $(this).closest("div");
         let namesp = parent.find("h4").text();
         let pricesp = parent.find("h5").text().split(" ")[0];
+        pricesp = pricesp.replace(/,/g, '');
         let divchillass = parent.find("div:nth-last-child(2)");
         let quantity = divchillass.find("input").val();
         let img = $(".img-ps").attr("src");
@@ -223,6 +232,80 @@ $(document).ready(function () {
             }
         )
     }
+    //lấy lại password 
+    $(".f-getpass").click(function(){
+        let email = $("#email_getpass").val();
+        let pass = $("#getpass_p").val();
+        let repass = $("#getpass_rg").val();
+
+        //error
+        let erroremail = $("#err-email-getpass");
+        let errornewpass = $("#err-newpass-getpass");
+        let errorrenewpass = $("#err-rnewpass-getpass");
+
+        isValid = true;
+        if(email == ""){
+            erroremail.css("display","block");
+            isValid = false;
+        }else {
+            if(validateEmail(email) == null){
+                erroremail.text("Email không đúng định dạng");
+                erroremail.css("display","block");
+                isValid = false;
+            }
+            else{
+                erroremail.text("Email không được để trống");
+                erroremail.css("display","none");
+            }
+        }
+        if(pass == ""){
+            errornewpass.text("Mật khẩu không được để trống");
+            errornewpass.css("display","block");
+            isValid = false;
+        }else {
+            if(!checkPassword(pass)){
+                errornewpass.text("Mật khẩu không đúng định dạng, nó phải bảo gồm ít nhất 8 ký tự và chứa 1 chứ hoa, chữ thường, số và 1 ký tự đặc biệt");
+                errornewpass.css("display","block");
+                isValid = false;
+            }
+            else {
+                errornewpass.text("Mật khẩu không được để trống");
+                errornewpass.css("display","none");
+            }
+        }
+        if(repass == ""){
+            errorrenewpass.text("Nhập lại mật khẩu không được để trống");
+            errorrenewpass.css("display","block");
+            isValid = false;
+        }else {
+            if(repass != pass){
+                errorrenewpass.text("Nội dung nhập không khớp với mật khẩu");
+                errorrenewpass.css("display","block");
+                isValid = false;
+            }else {
+                errorrenewpass.css("display","none");
+            }
+        }
+        if(isValid){
+            $.post(
+                "http://localhost/Toy_children/User/handlegetpass",
+                {
+                    email:email,
+                    newpass:pass
+                },
+                function (res){
+                    $(".show-inform h5").text("Thông báo");
+                    $(".show-inform p").text(res.Notification);
+                    $("#exampleModal").modal("show");
+                    if(res.errCode == 0){
+                        $("#close_notification").click(function(){
+                            window.location.assign("http://" + window.location.hostname + "/Toy_children/User/Index");
+                        })
+                    }
+                } 
+            )
+        }
+    })
     // ẩn hiện password register
     $("#r-showpass").click(function(){
         $("#res-pass").attr("type","text");

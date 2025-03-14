@@ -53,7 +53,7 @@
                 <p id="warning-repass" class="text-danger mb-2" style="display:none">Nhập lại mật khẩu không được để trống<p>
             </div>
             <div class="mb-3">
-                <span style="cursor:pointer">Quay lại đăng nhập</span>
+                <a href="/Toy_children/User/Index" style="cursor:pointer">Quay lại đăng nhập</a>
             </div>
             <button type="submit" class="btn btn-primary f-register">Đăng ký tài khoản</button>
         </form>

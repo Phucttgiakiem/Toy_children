@@ -39,12 +39,12 @@
                         />
                     </div>
                     <div class="form-group">
-                        <label for="disableinput">Địa chỉ</label>
+                        <label for="disableinput">Địa chỉ giao hàng</label>
                         <input
                         type="text"
                         class="form-control"
                         id="disableinput"
-                        value="<?=$infobill['DiaChi']?>"
+                        value="<?= isset($infobill['DiaChiGiaoHang']) && $infobill['DiaChiGiaoHang'] ? $infobill['DiaChiGiaoHang'] : 'Không có thông tin'; ?>"
                         disabled
                         />
                     </div>
@@ -77,6 +77,10 @@
                         value="<?=$infobill['TongThanhTien']?> đ"
                         disabled
                         />
+                    </div>
+                    <div class="form-group">
+                        <label for="disableinput">Ghi chú</label>
+                        <textarea class="form-control" rows="3" name="description" disabled><?=isset($infobill["GhiChu"]) && $infobill["GhiChu"] ? $infobill["GhiChu"]: "Không có thông tin" ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"

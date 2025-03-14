@@ -26,6 +26,25 @@
             $content_page = "../app/views/user/register.php";
             $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem]);
         }
+        public function Forgotpass (){
+            $content_page = "../app/views/user/forgotpass.php";
+            $this->render("/views/layouts/main",['content_page' => $content_page]);
+        }
+        public function handlegetpass (){
+            $email = isset($_POST["email"]) ? trim($_POST["email"]) : "";
+            $newpass = isset($_POST["newpass"]) ? trim($_POST["newpass"]) : "";
+            header('Content-Type: application/json');
+            if($email != "" && $newpass != ""){
+                $rs = $this->userModel->handlegetpass($email,$newpass);
+                if($rs == 0){
+                    echo json_encode(array("errCode" => 0,"Notification" => "Lấy lại mật khẩu thành công"));
+                }else if($re == 1){
+                    echo json_encode(array("errCode" => 1,"Notification" => "Tạo mật khẩu thất bại"));
+                }else {
+                    echo json_encode(array("errCode" => 2,"Notification" => "Email không tồn tại trên hệ thống thành công"));
+                }
+            }
+        }
         public function handleregister () {
             $username = $_POST['username'];
             $fullname = $_POST['fullname'];
@@ -59,7 +78,7 @@
                 $_SESSION["MaLoaiTaiKhoan"] = $rs["MaLoaiTaiKhoan"];
                 $_SESSION["TenHienThi"] = $rs["TenHienThi"];
                 if ($rs['MaLoaiTaiKhoan'] == 2) {
-                    echo json_encode(array("errCode" => 1, "Notification" => "Đăng nhập thành công", "redirect" => "/Toy_children/admin/"));
+                    echo json_encode(array("errCode" => 1, "Notification" => "Đăng nhập thành công", "redirect" => "/Toy_children/admin/Dashboard"));
                 } 
                 else
                 echo json_encode(array("errCode"=>1,"Notification" => "Chúc bạn có trải nghiệm mua sắm vui vẻ"));

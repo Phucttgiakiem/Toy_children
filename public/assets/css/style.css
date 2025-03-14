@@ -135,7 +135,7 @@
 .navbar .navbar-nav .nav-link.active,
 .fixed-top.bg-white .navbar .navbar-nav .nav-link:hover,
 .fixed-top.bg-white .navbar .navbar-nav .nav-link.active {
-    color: var(--bs-primary);
+    color: #3399ff;
 }
 
 .navbar .dropdown-toggle::after {
@@ -206,7 +206,7 @@
     height: 48px;
     border-radius: 48px;
     border: 1px solid var(--bs-white);
-    background: var(--bs-primary);
+    background: #b4b8b8;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

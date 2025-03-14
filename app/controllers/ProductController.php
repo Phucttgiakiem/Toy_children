@@ -12,6 +12,11 @@
             $this->CompanyModel = new HangSXModel();
         }
         public function Detailproduct($id = null){
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();  // Khởi tạo session nếu chưa được khởi tạo
+            }
+            $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
+            $totalitem = count($shoppingcard);
            // Kiểm tra nếu tham số 'id' có trong URL
            $product = null;
             if (isset($_GET['id'])) {
@@ -21,7 +26,7 @@
             }
             $product = $this->productModel->getOneProduct($id);
                   
-            $this->render("/views/Product/detailproduct",["detailpr"=>$product]);
+            $this->render("/views/Product/detailproduct",["detailpr"=>$product,'totalitem'=>$totalitem]);
         }
         public function Getnewlistproduct (){
             $page =(int)$_GET['page'];
@@ -36,7 +41,8 @@
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();  // Khởi tạo session nếu chưa được khởi tạo
             }
-
+            $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
+            $totalitem = count($shoppingcard);
             $products = $this->productModel->getAllProductwithrequire($companys,$typeproduct,$search);
             $typeproducts = $this->CategoryModel->getAllCategory();
             $companys = $this->CompanyModel->getHangSX();
@@ -44,7 +50,7 @@
             $content_page = "../app/views/Product/category.php";
             $this->render("/views/layouts/main",[
                 "products"=>$products,"Companys"=>$companys,"typeproducts"=>$typeproducts,
-                "content_page"=>$content_page]);
+                "content_page"=>$content_page,'totalitem'=>$totalitem]);
         }
     }
 ?>

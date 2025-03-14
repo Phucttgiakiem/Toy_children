@@ -19,6 +19,13 @@
        
             $this->render("/views/layouts/main",['product'=>$products,'content_page' => $content_page,'totalitem'=>$totalitem]);
         }
-        
+        public function PageEmpty(){
+            session_start();
+            $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
+            $totalitem = count($shoppingcard);
+            $content_page = "../app/views/PageEmpty/404.php";
+       
+            $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem]);
+        }
     }
 ?>
