@@ -1,5 +1,5 @@
 <?php 
-    require_once "../app/models/admin/LoaiSPModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/LoaiSPModel.php";
     class TypeproductController extends Controller {
         private $loaispModel;
         public function __construct(){
@@ -7,12 +7,12 @@
         }
         public function index() {
             $loaisp = $this->loaispModel->getLoaiSP();
-            $content_page = "../app/views/admin/typeproduct/index.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."/typeproduct/index.php";
             $this->render("/views/admin/dashboard",['loaisp'=>$loaisp,'content_page' => $content_page]);
         }
         public function edit($id){
             $loaisp = $this->loaispModel->getOneLoaiSP((int)$id);
-            $content_page = "../app/views/admin/typeproduct/edit.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."/typeproduct/edit.php";
             $this->render("/views/admin/dashboard",['loaisp'=>$loaisp,'content_page' => $content_page]);
         }
         public function update(){
@@ -29,7 +29,7 @@
             }
         }
         public function create(){
-            $content_page = "../app/views/admin/typeproduct/create.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."/typeproduct/create.php";
             $this->render("/views/admin/dashboard",['content_page' => $content_page]);
         }
         public function createitem(){

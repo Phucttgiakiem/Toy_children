@@ -1,5 +1,5 @@
 <?php 
-    require_once "../app/core/Database.php";
+    require_once str_replace("models","core",__DIR__) ."/Database.php";
     class UserModel extends Database {
         public function handleaccount ($username,$password){
             $sql = "SELECT * FROM TaiKhoan

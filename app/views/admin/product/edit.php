@@ -78,9 +78,7 @@
                     </div>
                     <div class="form-group">
                         <label for="disableinput">Mô tả sản phẩm</label>
-                        <textarea class="form-control" rows="3" id="mota">
-                        <?=$product['MoTa']?>
-                        </textarea>
+                        <textarea class="form-control" rows="3" id="mota"><?=$product['MoTa']?></textarea>
                         <small id="mota-sp" class="form-text text-muted">Mô tả sản phẩm không được để trống</small>
                     </div>
                 </div>

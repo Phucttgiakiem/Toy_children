@@ -683,13 +683,15 @@
             </div>
           </div>
         </div>
-        <?php require_once "../app/views/admin/layouts/header.php" ?>
-        <?php require_once "../app/views/admin/layouts/sidebar.php" ?>
+        <?php 
+      
+        require_once __DIR__."/layouts/header.php" ?>
+        <?php require_once __DIR__."/layouts/sidebar.php" ?>
         <?php
                 $content_page = $sharedData['content_page'];
                 require_once ($content_page);
         ?>
-        <?php require_once "../app/views/admin/layouts/footer.php" ?>
+        <?php require_once __DIR__."/layouts/footer.php" ?>
     </div>
 
       <!-- Custom template | don't include it in your project! -->

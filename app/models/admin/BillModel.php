@@ -1,5 +1,5 @@
 <?php 
-    require_once "../app/core/Database.php";
+    require_once  str_replace("models\admin","core",__DIR__) ."/Database.php";
     class BillModel extends Database {
         public function getListbill ($page){
             $sql = "SELECT * FROM DonDatHang ORDER BY NgayLap DESC";

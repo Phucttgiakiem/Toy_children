@@ -124,7 +124,7 @@
                 </div>
                 </div>
                     <div class="card-action">
-                        <a href="/Toy_children/admin/Hangsanxuat" class="btn btn-danger">Quay lại</a>
+                        <a href="/Toy_children/admin/Product/Index" class="btn btn-danger">Quay lại</a>
                         <button type="submit" class="btn btn-primary" id="btn-create-pd">Tạo</button>
                     </div>
                 </div>

@@ -40,7 +40,7 @@ $(document).ready(function () {
                         let div = `
                             <div class="col-md-6 col-lg-4 col-xl-3">
                                 <div class="rounded position-relative fruite-item d-flex flex-column h-100 " >
-                                    <div class="fruite-img" >
+                                    <div class="fruite-img border border-secondary rounded-top border-bottom-0" >
                                         <img src="/Toy_children/public/assets/img/${arr[i].HinhURL}" class="img-fluid w-100 rounded-top" alt="">
                                     </div>
                                     <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div> -->
@@ -49,7 +49,7 @@ $(document).ready(function () {
                                         <p class="flex-grow-1">${arr[i].MoTa}</p>
                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                             <p class="text-dark fs-5 fw-bold mb-0">${arr[i].GiaSanPham} đ</p>
-                                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary detail-pd" data-id="${arr[i].MaSanPham}"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
+                                            <a href="/Toy_children/Product/Detailproduct/${arr[i].MaSanPham}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@ $(document).ready(function () {
                     let div = `
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="rounded position-relative fruite-item d-flex flex-column h-100 " >
-                                <div class="fruite-img" >
+                                <div class="fruite-img border border-secondary rounded-top border-bottom-0" >
                                     <img src="/Toy_children/public/assets/img/${arr[i].HinhURL}" class="img-fluid w-100 rounded-top" alt="">
                                 </div>
                                 <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div> -->
@@ -91,7 +91,7 @@ $(document).ready(function () {
                                     <p class="flex-grow-1">${arr[i].MoTa}</p>
                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                         <p class="text-dark fs-5 fw-bold mb-0">${arr[i].GiaSanPham} đ</p>
-                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary detail-pd" data-id="${arr[i].MaSanPham}"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
+                                        <a href="/Toy_children/Product/Detailproduct/${arr[i].MaSanPham}" class="btn border border-secondary rounded-pill px-3 text-primary detail-pd"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
                                     </div>
                                 </div>
                             </div>
@@ -106,20 +106,6 @@ $(document).ready(function () {
             }
         )
     })
-    $(document).on('click',".detail-pd",function (e) {
-        e.preventDefault(); // Ngăn chặn load trang mặc định
-
-        let productId = $(this).data("id"); // Lấy ID từ data-id
-        $.get(
-            "http://localhost/Toy_children/Product/Detailproduct", // Trang xử lý chi tiết sản phẩm
-            { 
-                id: productId
-            },
-            function (response) {
-                 $("#main").html(response);
-            },
-        );
-    });
     $(document).on('click', '.add-to-card', function(e) {
         e.preventDefault();
         let idsp = $(this).data("id");

@@ -1,5 +1,5 @@
 <?php 
-    require_once "../app/core/Database.php";
+    require_once str_replace("models\admin","core",__DIR__) ."\\Database.php";
     class HangSXModel extends Database{
         public function getHangSX(){
             $sql = "SELECT * FROM HangSanXuat";

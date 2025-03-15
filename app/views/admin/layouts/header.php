@@ -33,7 +33,7 @@
               
 
               <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
-                <li class="nav-item topbar-icon dropdown hidden-caret">
+                <!-- <li class="nav-item topbar-icon dropdown hidden-caret">
                   
                   <ul
                     class="dropdown-menu messages-notif-box animated fadeIn"
@@ -106,9 +106,11 @@
                       </a>
                     </li>
                   </ul>
-                </li>
+                </li> -->
                    
-
+                <li>
+                    <a href="/Toy_children/Home/Index" class="btn btn-success">Về trang chủ</a>
+                </li>
                 <li class="nav-item topbar-user dropdown hidden-caret">
                   <a
                     class="dropdown-toggle profile-pic"

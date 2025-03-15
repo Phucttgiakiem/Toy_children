@@ -1,10 +1,10 @@
 RewriteEngine On
 Options -Indexes
 
-
+# Nếu yêu cầu là tài nguyên thực tế (file, thư mục), không rewrite
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/public/
 
-RewriteRule ^(.*)$ public/index.php?url=$1 [NC,QSA]
+# Nếu yêu cầu không phải từ thư mục 'public', chuyển đến public/index.php
+RewriteRule ^(.*)$ index.php?url=$1 [NC,QSA]
 
