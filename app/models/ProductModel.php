@@ -125,6 +125,11 @@
             $stmt = $this->fetchOne($sql);
             return $stmt['total'];
         }
+        public function gettotalwatcher($id){
+            $sql = "UPDATE SanPham SET SoLuocXem = SoLuocXem + 1 WHERE MaSanPham = ?";
+            $stmt = $this->execute($sql,[(int)$id]);
+            return $stmt;
+        }
         public function updateProduct($sql,$params){
             $stmt = $this->execute($sql,$params);
             return $stmt;

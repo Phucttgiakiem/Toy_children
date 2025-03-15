@@ -29,7 +29,9 @@
                                             <p class="flex-grow-1"><?=$item['MoTa']?></p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0"><?=number_format($item['GiaSanPham'],0, '.', ',') ?> đ</p>
+
                                                 <a href="/Toy_children/Product/Detailproduct/<?= $item['MaSanPham']?>" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
+
                                             </div>
                                         </div>
                                     </div>

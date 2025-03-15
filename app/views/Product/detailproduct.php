@@ -9,7 +9,7 @@
             <div class="col-lg-12 col-xl-12">
                 <div class="row g-4">
                     <div class="col-lg-6">
-                        <div class="border rounded border-warning" style="width:30rem;height:30rem">
+                        <div class="border rounded border-warning parent-img-detail">
                             <img src="/Toy_children/public/assets/img/<?=$row['HinhURL']?>" class="img-fluid rounded img-ps w-100 h-100"  alt="Image">
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                                 <p><?=$row['MoTa']?></p>
                                 <div class="px-2">
                                     <div class="row g-4">
-                                        <div class="col-6">
+                                        <div class="col-12 col-lg-6">
                                             <div class="row bg-light align-items-center text-center justify-content-center py-2">
                                                 <div class="col-6">
                                                     <p class="mb-0">Hãng sản xuất</p>
@@ -129,5 +129,7 @@
         </div>
     </div>
 </div>
+
+
 
 <!-- Single Product End -->

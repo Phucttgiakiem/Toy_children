@@ -19,60 +19,63 @@
 <div class="container-fluid py-5 mt-5">
     <div class="container py-5">
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-shoppingcard">
                 <thead>
                     <tr>
-                    <th scope="col">Products</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Handle</th>
+                    <th class="text-center" scope="col">Products</th>
+                    <th class="text-center" scope="col">Name</th>
+                    <th class="text-center" scope="col">Price</th>
+                    <th class="text-center" scope="col">Quantity</th>
+                    <th class="text-center" scope="col">Total</th>
+                    <th class="text-center" scope="col">Handle</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php if(count($shopping_card) > 0){
                   foreach($shopping_card as $item):?>
                     <tr id="<?=$item->id?>">
-                        <th scope="row">
+                        <td class="d-flex justify-content-center" >
                             <div class="d-flex align-items-center">
-                                <img src="<?=strpos($item->img,"Toy_children") ? $item->img:"/Toy_children/".$item->img ?>" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                <img src="<?=strpos($item->img,"Toy_children") ? $item->img:"/Toy_children/".$item->img ?>" class="img-fluid rounded-circle img-shoppingcard" alt="">
                             </div>
-                        </th>
-                        <td>
-                            <p class="mb-0 mt-4"><?=$item->name?></p>
                         </td>
-                        <td>
-                            <p class="mb-0 mt-4"><?=$item->price?> đ</p>
+                        <td class="text-center align-middle">
+                            <a href="/Toy_children/Product/Detailproduct/<?=$item->id?>" class="mb-0 text-dark"><?=$item->name?></a>
                         </td>
-                        <td>
-                            <div class="d-flex align-items-center input-group quantity mt-4" style="width: 100px;">
+                        <td class="text-center align-middle">
+                            <p class="mb-0"><?=$item->price?> đ</p>
+                        </td>
+                        <td class="align-middle">
+                            <div class="d-flex align-items-center input-group quantity m-auto" style="width: max-content;">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border btn-shoppingcard" >
                                     <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control form-control-sm text-center border-0" value="<?=$item->quantity?>">
+                                <input id="update-quantity" type="text" class="text-center border-0" value="<?=$item->quantity?>">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border btn-shoppingcard">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
                         </td>
-                        <td>
-                            <p class="mb-0 mt-4"><?=$item->totalprice?> đ</p>
+                        <td class="text-center align-middle">
+                            <p id="totalpriceitem" class="mb-0"><?=$item->totalprice?> đ</p>
                         </td>
-                        <td>
-                            <button class="btn btn-md rounded-circle bg-light border mt-4 dl-sp" data-id="<?=$item->id?>">
-                                <i class="fa-solid fa-xmark text-danger"></i>
-                            </button>
-                            <button class="btn btn-md rounded-circle bg-light border mt-4 ud-sp" data-id="<?=$item->id?>">
-                                <i class="fa-solid fa-arrow-up-from-bracket text-warning"></i>
-                            </button>
-                            <button class="btn btn-md rounded-circle bg-light border mt-4 w-sp" data-id="<?=$item->id?>">
-                                <i class="fa-solid fa-info text-success"></i>
-                            </button>
+                        <td class="align-middle">
+                            
+
+                                <!-- Các nút button hiển thị theo chiều ngang trên màn hình lớn -->
+                                <div class="d-flex justify-content-evenly">
+                                <button class="btn btn-md rounded-circle bg-light border dl-sp btn-shoppingcard" data-id="<?=$item->id?>">
+                                    <i class="fa-solid fa-xmark text-danger"></i>
+                                </button>
+                                <button class="btn btn-md rounded-circle bg-light border ud-sp btn-shoppingcard" data-id="<?=$item->id?>">
+                                    <i class="fa-solid fa-arrow-up-from-bracket text-warning"></i>
+                                </button>
+                                </div>
+                            
                         </td>
                     </tr>
                 <?php 
@@ -97,10 +100,10 @@
                         <div class="d-flex justify-content-between">
                             <h5 class="mb-0 me-4">Vận chuyển</h5>
                             <div class="">
-                                <p class="mb-0">Flat rate: $0.00</p>
+                                <p class="mb-0">Tỷ giá cố định: $0.00</p>
                             </div>
                         </div>
-                        <p class="mb-0 text-end">Shipping to Ukraine.</p>
+                        <p class="mb-0 text-end">Vận chuyển từ Ukraine.</p>
                     </div>
                     <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                         <h5 class="mb-0 ps-4 me-4">Tổng</h5>
@@ -108,7 +111,7 @@
                     </div>
                         <?php 
                             if($total_bill > 0){
-                                echo "<a href='/Toy_children/Checkout/checkoutbill' class='btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4' >Proceed Checkout</a>";
+                                echo "<a href='/Toy_children/Checkout/checkoutbill' class='btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4' >Tiến hành thanh toán</a>";
                             }
                         ?>
                     </div>
