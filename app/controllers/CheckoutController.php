@@ -1,8 +1,8 @@
 <?php 
-    require_once "../app/models/itemShoppingcard.php";
-    require_once "../app/models/ShoppingcardModel.php";
-    require_once "../app/models/admin/accountModel.php";
-    require_once "../app/models/CheckoutModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/itemShoppingcard.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/ShoppingcardModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/admin/accountModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/CheckoutModel.php";
     class CheckoutController extends Controller {
         private $itemshopping;
         private $lsshoppingcard;
@@ -28,7 +28,7 @@
             }
             $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
             $totalitem = count($shoppingcard);
-            $content_page = "../app/views/shoppingcard/shoppingcard.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."shoppingcard/shoppingcard.php";
             $this->render("/views/layouts/main",['content_page' => $content_page,'shopping_card'=>$shoppingcard,'totalitem'=>$totalitem]);
         }
         public function Additem (){
@@ -90,14 +90,14 @@
             $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
             $totalitem = count($shoppingcard);
             if(isset($_SESSION["MaTaiKhoan"])){
-                $content_page = "../app/views/shoppingcard/checkoutbill.php";
+                $content_page = str_replace("controllers","views/",__DIR__) ."/shoppingcard/checkoutbill.php";
                 $id = (int)$_SESSION["MaTaiKhoan"];
                 $stmt = $this->useraccount->getOneuser($id);
                 $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem,
                     'shoppingcard' => $shoppingcard, 'accountinfo' => $stmt
                 ]);
             }else {
-                $content_page = "../app/views/user/login.php";
+                $content_page = str_replace("controllers","views/",__DIR__) ."/user/login.php";
                 $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem]);
             }
         }

@@ -1,5 +1,5 @@
 <?php 
-    require_once "../app/models/admin/BillModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/BillModel.php";
     class BillController extends Controller {
         private $billModel;
         public function __construct(){
@@ -7,7 +7,7 @@
         }
         public function index($page = 1) {
             $bills = $this->billModel->getListbill($page);
-            $content_page = "../app/views/admin/bill/index.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."/bill/index.php";
             $this->render("/views/admin/dashboard",['bills'=>$bills,'content_page' => $content_page]);
         }
         public function detail($idhd){
@@ -15,7 +15,7 @@
             $infobill = $this->billModel->getInfobill($id);
             $detailbill = $this->billModel->getDetailbill($id);
             $Tinhtrang = $this->billModel->getStatus();
-            $content_page = "../app/views/admin/bill/detail.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."/bill/detail.php";
             $this->render("/views/admin/dashboard",[
                 'content_page' => $content_page,'infobill'=>$infobill,'detailbill'=>$detailbill,
                 'Tinhtrang'=>$Tinhtrang]);

@@ -1,6 +1,6 @@
 <?php 
-    require_once "../app/models/UserModel.php";
-    require_once "../app/models/ProductModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/UserModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/ProductModel.php";
     class UserController extends Controller {
         private $userModel;
         private $productModel;
@@ -14,7 +14,7 @@
             }
             $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
             $totalitem = count($shoppingcard);
-            $content_page = "../app/views/user/login.php";
+            $content_page =  str_replace("controllers","views/",__DIR__) ."/user/login.php";
             $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem]);
         }
         public function Register(){
@@ -23,11 +23,11 @@
             }
             $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
             $totalitem = count($shoppingcard);
-            $content_page = "../app/views/user/register.php";
+            $content_page =  str_replace("controllers","views/",__DIR__) ."/user/register.php";
             $this->render("/views/layouts/main",['content_page' => $content_page,'totalitem'=>$totalitem]);
         }
         public function Forgotpass (){
-            $content_page = "../app/views/user/forgotpass.php";
+            $content_page =  str_replace("controllers","views/",__DIR__) ."/user/forgotpass.php";
             $this->render("/views/layouts/main",['content_page' => $content_page]);
         }
         public function handlegetpass (){
@@ -77,6 +77,7 @@
                 $_SESSION["MaTaiKhoan"] = $rs["MaTaiKhoan"];
                 $_SESSION["MaLoaiTaiKhoan"] = $rs["MaLoaiTaiKhoan"];
                 $_SESSION["TenHienThi"] = $rs["TenHienThi"];
+                $_SESSION["LoaiTaiKhoan"] = (int)$rs["MaLoaiTaiKhoan"];
                 if ($rs['MaLoaiTaiKhoan'] == 2) {
                     echo json_encode(array("errCode" => 1, "Notification" => "Đăng nhập thành công", "redirect" => "/Toy_children/admin/Dashboard"));
                 } 
@@ -95,12 +96,13 @@
                 unset($_SESSION["MaTaiKhoan"]);
                 unset($_SESSION["MaLoaiTaiKhoan"]);
                 unset($_SESSION["TenHienThi"]);
+                unset( $_SESSION["LoaiTaiKhoan"]);
             }
             $offset = 0;
             $products = $this->productModel->getAllProduct($offset);
             $shoppingcard = isset($_SESSION["GioHang"]) ? unserialize($_SESSION["GioHang"]) : [];
             $totalitem = count($shoppingcard);
-            $content_page = "../app/views/home/index.php";
+            $content_page =  str_replace("controllers","views/",__DIR__) ."/home/index.php";
             $this->render("/views/layouts/main",['product'=>$products,'content_page' => $content_page,'totalitem'=>$totalitem]);
         }
     }

@@ -1,5 +1,6 @@
-<?php 
-    require_once "../app/core/Database.php";
+<?php
+    
+    require_once str_replace("models\admin","core",__DIR__) ."\\Database.php";
     class LoaiSPModel extends Database{
         public function getLoaiSP(){
             $sql = "SELECT * FROM LoaiSanPham";

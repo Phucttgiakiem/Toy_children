@@ -1,5 +1,5 @@
 <?php 
-    require_once "../app/models/admin/HangSXModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."/HangSXModel.php";
     class HangSanXuatController extends Controller {
         private $hangsxModel;
         public function __construct(){
@@ -7,12 +7,12 @@
         }
         public function index() {
             $hangsx = $this->hangsxModel->getHangSX();
-            $content_page = "../app/views/admin/HangSanXuat/index.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."/HangSanXuat/index.php";
             $this->render("/views/admin/dashboard",['hangsx'=>$hangsx,'content_page' => $content_page]);
         }
         public function edit($id){
             $hangsx = $this->hangsxModel->getOneHangSX($id);
-            $content_page = "../app/views/admin/hangsanxuat/edit.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."/hangsanxuat/edit.php";
             $this->render("/views/admin/dashboard",['hangsx'=>$hangsx,'content_page' => $content_page]);
         }
 
@@ -53,7 +53,7 @@
             }
         }
         public function create(){
-            $content_page = "../app/views/admin/HangSanXuat/create.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."/HangSanXuat/create.php";
             $this->render("/views/admin/dashboard",['content_page' => $content_page]);
         }
         public function createitem(){

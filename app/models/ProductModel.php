@@ -1,5 +1,5 @@
 <?php 
-    require_once "../app/core/Database.php";
+    require_once str_replace("models","core",__DIR__) ."/Database.php";
     class ProductModel extends Database {
         public function getAllProductwithType ($id){
             $sql = "SELECT * FROM SanPham WHERE BiXoa = 0 ORDER BY NgayNhap DESC LIMIT 0,4";

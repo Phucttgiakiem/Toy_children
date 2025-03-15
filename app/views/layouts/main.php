@@ -8,14 +8,14 @@
         <meta content="" name="description">
         
         <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https:/fonts.googleapis.com">
+        <link rel="preconnect" href="https:/fonts.gstatic.com" crossorigin>
+        <link href="https:/fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
 
         <!-- Icon Font Stylesheet -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" >
+        <link rel="stylesheet" href="https:/use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https:/cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" >
 
         <!-- Libraries Stylesheet -->
         <link rel="stylesheet" href="/Toy_children/public/assets/lib/lightbox/css/lightbox.min.css" >
@@ -32,7 +32,9 @@
     <body>
 
         
-        <?php require_once "../app/views/layouts/header.php" ?>
+        <?php 
+            require_once __DIR__ . "/header.php" 
+        ?>
 
         <div id="main">
             <?php
@@ -68,7 +70,6 @@
             </div>
         </div>
         <!-- Footer End -->
-
         <!-- Copyright Start -->
         <div class="container-fluid copyright py-4" style="background-color:#dee2e6">
             <div class="container">
@@ -91,8 +92,8 @@
         
     <!-- JavaScript Libraries -->
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https:/ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https:/cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/Toy_children/public/assets/lib/easing/easing.min.js"></script>
     <script src="/Toy_children/public/assets/lib/waypoints/waypoints.min.js"></script>
     <script src="/Toy_children/public/assets/lib/lightbox/js/lightbox.min.js"></script>

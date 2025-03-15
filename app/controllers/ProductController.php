@@ -1,7 +1,7 @@
 <?php
-    require_once "../app/models/ProductModel.php";
-    require_once "../app/models/CategoryModel.php";
-    require_once "../app/models/admin/HangSXModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."ProductModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."CategoryModel.php";
+    require_once str_replace("controllers","models/",__DIR__) ."admin/HangSXModel.php";
     class ProductController extends Controller {
         private $productModel;
         private $CategoryModel;
@@ -28,8 +28,11 @@
             $this->productModel->gettotalwatcher($id);
 
             $product = $this->productModel->getOneProduct($id);
-            $content_page = "../app/views/Product/detailproduct.php";
-            $this->render("/views/layouts/main",["detailpr"=>$product,"content_page"=>$content_page,'totalitem'=>$totalitem]);
+
+            $content_page = str_replace("controllers","views/",__DIR__) ."/Product/detailproduct.php";
+                  
+            $this->render("/views/layouts/main",['content_page' => $content_page,"detailpr"=>$product,'totalitem'=>$totalitem]);
+
         }
         public function Getnewlistproduct (){
             $page =(int)$_GET['page'];
@@ -50,7 +53,7 @@
             $typeproducts = $this->CategoryModel->getAllCategory();
             $companys = $this->CompanyModel->getHangSX();
 
-            $content_page = "../app/views/Product/category.php";
+            $content_page = str_replace("controllers","views/",__DIR__) ."Product/category.php";
             $this->render("/views/layouts/main",[
                 "products"=>$products,"Companys"=>$companys,"typeproducts"=>$typeproducts,
                 "content_page"=>$content_page,'totalitem'=>$totalitem]);

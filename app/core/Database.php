@@ -1,5 +1,5 @@
 <?php 
-    require_once "../config/config.php";
+    require_once  str_replace("\app\core","",__DIR__). "/config/config.php";
     class Database {
         private $conn;
         public function __construct(){

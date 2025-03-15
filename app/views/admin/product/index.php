@@ -129,6 +129,7 @@
                         <th class="text-center">STT</th>
                         <th class="text-center">Tên sản phẩm</th>
                         <th class="text-center">Hình ảnh</th>
+                        <th class="text-center">Giá bán</th>
                         <th class="text-center">Ngày nhập</th>
                         <th class="text-center">Tình trang</th>
                         <th class="text-center">Thao tác</th>
@@ -143,6 +144,7 @@
                             <td class="text-center"><?=$stt ?></td>
                             <td class="text-center"><?=$item['TenSanPham']?></td>
                             <td class="text-center"><img src='/Toy_children/public/assets/img/<?php echo $item['HinhURL']; ?>' width='50px' height='50px'></td>
+                            <td class="text-center"><?=$item['GiaSanPham']?> đ</td>
                             <td class="text-center"><?=$item['NgayNhap']?></td>
                             <td class="text-center">
                                 <?php 

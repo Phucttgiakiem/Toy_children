@@ -1,6 +1,7 @@
 <?php
     global $sharedData;
     $totalitem = $sharedData['totalitem'];
+   
 ?>
 <!-- Spinner Start -->
 <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -81,9 +82,10 @@
                             <i class="fas fa-user fa-2x"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Cài đặt</a></li>
-                            <li><a class="dropdown-item" href="#">Xem danh sách hóa đơn</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <?php if( $_SESSION["LoaiTaiKhoan"] == 2){ 
+                                echo "<li><a class='dropdown-item' href='/Toy_children/admin/Dashboard'>Xem trang Admin</a></li>
+                                        <li><hr class='dropdown-divider'></li>";}
+                            ?>
                             <li><a href="/Toy_children/User/handlelogout" class="dropdown-item" id="logout">Thoát</a></li>
                         </ul>
                     </div>
