@@ -81,8 +81,11 @@
                 <?php 
                     $total_bill += $item->totalprice;
                     endforeach;
-                }?>
-                
+                }else {?>
+                    <tr>
+                        <td colspan="6">Không có sản phẩm trong giỏ hàng</td>
+                    </tr>
+                <?php }?>
                 </tbody>
             </table>
         </div>
