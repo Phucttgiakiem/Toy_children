@@ -118,7 +118,13 @@
     color: var(--bs-primary) !important;
 }
 /*** Topbar End ***/
-
+/*****  button shopping card    *****/
+.btn-shoppingcard {
+    width:2.5rem;
+    height:2.5rem;
+    font-size: 1rem;
+    text-align: center;
+}
 /*** Navbar Start ***/
 .navbar .navbar-nav .nav-link {
     padding: 10px 15px;
@@ -147,6 +153,41 @@
     margin-left: 8px;
 }
 
+/* hình ảnh detail */
+.parent-img-detail {
+    width:30rem;
+    aspect-ratio: 1 / 1;
+}
+.img-shoppingcard {
+    width: 5rem; 
+    height: 5rem;
+}
+.table-shoppingcard {
+    width: 100%;
+    table-layout: auto;
+    word-wrap: break-word;
+}
+
+.table-shoppingcard tbody tr {
+    min-height: 5rem;
+}
+/* Đảm bảo các ô trong bảng có thể co giãn */
+.table-shoppingcard tbody tr td {
+    height:100%;
+    word-wrap: break-word;
+    text-align: center;
+}
+.table-shoppingcard tbody tr td p {
+    margin: 0;
+    line-height: normal;
+    font-size: 1rem;
+}
+.table-shoppingcard tbody tr td a {
+    font-size: 1rem;
+}
+.table-shoppingcard tbody tr td input {
+    width:3rem
+}
 @media (min-width: 1200px) {
     .navbar .nav-item .dropdown-menu {
         display: block;
@@ -229,6 +270,7 @@
 }
 
 @media (min-width: 992px) {
+    
     .hero-header,
     .page-header {
         margin-top: 152px !important;
@@ -236,6 +278,27 @@
 }
 
 @media (max-width: 992px) {
+    .parent-img-detail {
+        width:100%;
+        
+    }
+    .btn-shoppingcard {
+        width:1.8rem;
+        height:1.8rem;
+        font-size: 0.6rem;
+        padding:0;
+        margin-right:0.2rem;
+        text-align: center;
+    }
+    .table-shoppingcard tbody tr td input {
+        width:1.2rem
+    }
+    .table-shoppingcard tbody tr td p{
+        font-size: 0.7rem;
+    }
+    .table-shoppingcard tbody tr td a{
+        font-size: 0.7rem;
+    }
     .hero-header,
     .page-header {
         margin-top: 97px !important;

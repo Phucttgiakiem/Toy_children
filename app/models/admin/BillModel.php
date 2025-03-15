@@ -32,19 +32,19 @@
             return $stmt;
         }
         public function updatestatusbill ($id,$idstatus){
-            $sql1 = "SELECT ct.MaSanPham,ct.SoLuong,sp.SoLuongBan FROM ChiTietDonDatHang ct,SanPham sp 
+            $sql1 = "SELECT ct.MaSanPham,ct.SoLuong,sp.SoLuongTon FROM ChiTietDonDatHang ct,SanPham sp 
             WHERE ct.MaSanPham = sp.MaSanPham AND ct.MaDonDatHang = $id";
 
             $stmt1 = $this->fetchAll($sql1);
             if($idstatus != 4 && $idstatus != 1){
                 if (!$stmt1) {
                     return 3; // lỗi kiểm tra sản phẩm bán ra
-                }else if ($stmt1[0]['SoLuong'] > $stmt1[0]['SoLuongBan']) {
+                }else if ($stmt1[0]['SoLuong'] > $stmt1[0]['SoLuongTon']) {
                     return 4; // không đủ sản phẩm để mua hàng
                 }else if ($idstatus == 3) {
                     //trừ số sản phẩm đã mua
                     foreach($stmt1 as $key => $value){
-                        $sql3 = "UPDATE SanPham SET SoLuongBan = SoLuongBan - ? WHERE MaSanPham = ?";
+                        $sql3 = "UPDATE SanPham SET SoLuongTon = SoLuongTon - ? WHERE MaSanPham = ?";
                         $stmt3 = $this->execute($sql3,[$value['SoLuong'],$value['MaSanPham']]); 
                         if (!$stmt3) {
                             return 5; // lỗi cập nhật số lượng sản phẩm bán ra
@@ -55,7 +55,7 @@
             if($idstatus == 4){
                 // trả lại số sản phẩm đã mua
                 foreach($stmt1 as $key => $value){
-                    $sql4 = "UPDATE SanPham SET SoLuongBan = SoLuongBan + ? WHERE MaSanPham = ?";
+                    $sql4 = "UPDATE SanPham SET SoLuongTon = SoLuongTon + ? WHERE MaSanPham = ?";
                     $stmt4 = $this->execute($sql4,[$value['SoLuong'],$value['MaSanPham']]);
                     if (!$stmt4) {
                         return 5; // lỗi cập nhật số lượng sản phẩm bán ra

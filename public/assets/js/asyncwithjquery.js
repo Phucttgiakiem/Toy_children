@@ -49,7 +49,7 @@ $(document).ready(function () {
                                         <p class="flex-grow-1">${arr[i].MoTa}</p>
                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                             <p class="text-dark fs-5 fw-bold mb-0">${arr[i].GiaSanPham} đ</p>
-                                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary detail-pd" data-id="${arr[i].MaSanPham}"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
+                                            <a href="/Toy_children/Product/Detailproduct/${arr[i].MaSanPham}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@ $(document).ready(function () {
                                     <p class="flex-grow-1">${arr[i].MoTa}</p>
                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                         <p class="text-dark fs-5 fw-bold mb-0">${arr[i].GiaSanPham} đ</p>
-                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary detail-pd" data-id="${arr[i].MaSanPham}"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
+                                        <a href="/Toy_children/Product/Detailproduct/${arr[i].MaSanPham}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fas fa-info-circle me-2 text-primary"></i> Chi tiết</a>
                                     </div>
                                 </div>
                             </div>
@@ -106,20 +106,20 @@ $(document).ready(function () {
             }
         )
     })
-    $(document).on('click',".detail-pd",function (e) {
-        e.preventDefault(); // Ngăn chặn load trang mặc định
+    // $(document).on('click',".detail-pd",function (e) {
+    //     e.preventDefault(); // Ngăn chặn load trang mặc định
 
-        let productId = $(this).data("id"); // Lấy ID từ data-id
-        $.get(
-            "http://localhost/Toy_children/Product/Detailproduct", // Trang xử lý chi tiết sản phẩm
-            { 
-                id: productId
-            },
-            function (response) {
-                 $("#main").html(response);
-            },
-        );
-    });
+    //     let productId = $(this).data("id"); // Lấy ID từ data-id
+    //     $.get(
+    //         "http://localhost/Toy_children/Product/Detailproduct", // Trang xử lý chi tiết sản phẩm
+    //         { 
+    //             id: productId
+    //         },
+    //         function (response) {
+    //              $("#main").html(response);
+    //         },
+    //     );
+    // });
     $(document).on('click', '.add-to-card', function(e) {
         e.preventDefault();
         let idsp = $(this).data("id");
@@ -154,8 +154,7 @@ $(document).ready(function () {
     $(document).on('click', '.ud-sp', function(e) {
         let idsp = $(this).data("id");
         let tr = $(`#${idsp}`);
-        let parent1 = tr.find("td");
-        let quantity = parent1.eq(2).find("input").val()
+        let quantity = $("#update-quantity").val();
         $.post(
             "http://localhost/Toy_children/Checkout/Updateitem",
             {
@@ -167,8 +166,8 @@ $(document).ready(function () {
                 $(".show-inform p").text(res.Notification);
                 $(".subtotal").text(res.tongdonhang+" đ");
                 $(".Total-bill").text(res.tongdonhang+" đ");
-                parent1.eq(3).find("p").text(res.tongsanpham + "đ");
-                if(Number(quantity) == 0) parent1.eq(2).find("input").val(1);
+                $("#totalpriceitem").text(res.tongsanpham + "đ");
+                if(Number(quantity) == 0) $("#update-quantity").val(1);
                  // Chỉ mở modal sau khi nội dung đã được cập nhật
                  setTimeout(() => {
                     $("#exampleModal").modal("show");

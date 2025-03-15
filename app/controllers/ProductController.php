@@ -24,9 +24,12 @@
 
                 // Lấy thông tin sản phẩm từ model
             }
+            // cập nhật số lượt xem
+            $this->productModel->gettotalwatcher($id);
+
             $product = $this->productModel->getOneProduct($id);
-                  
-            $this->render("/views/Product/detailproduct",["detailpr"=>$product,'totalitem'=>$totalitem]);
+            $content_page = "../app/views/Product/detailproduct.php";
+            $this->render("/views/layouts/main",["detailpr"=>$product,"content_page"=>$content_page,'totalitem'=>$totalitem]);
         }
         public function Getnewlistproduct (){
             $page =(int)$_GET['page'];
