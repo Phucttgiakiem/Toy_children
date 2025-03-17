@@ -10,7 +10,7 @@
                 die("kết nối thất bại:".$this->conn->connect_error);
             }
             //Thiết lập charset là UTF-8
-            $this->conn->set_charset("utf-8");
+            $this->conn->set_charset("utf8");
         }
         // Hàm thực thi truy vấn SELECT
         public function query($sql) {
